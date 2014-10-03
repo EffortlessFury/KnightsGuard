@@ -5,9 +5,25 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\s_player</sprite>
+    <sprite>sprites\s_tower</sprite>
+    <sprite>sprites\s_bullet</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\o_player</object>
+    <object>objects\o_tower</object>
+    <object>objects\o_bullet</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+  </rooms>
+  <constants number="2">
+    <constant name="GM_build_date">41915.7481303704</constant>
+    <constant name="GM_version">'1.0.0.0'</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
