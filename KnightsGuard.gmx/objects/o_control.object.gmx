@@ -30,6 +30,7 @@ global.grid = mp_grid_create(X_MARGIN, Y_MARGIN, ceil(room_width/CELL_SIZE) - 2*
 
 lives = 30
 wave = 0
+score = 0
 global.enemiesInQueue = 0
 spawnTime = 60 // 60 steps between spawning each unit.
 waveText = false
@@ -161,11 +162,15 @@ if (!canPlaceHere &amp;&amp; mouse_check_button_pressed(mb_right))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black)
+            <string>draw_set_color(c_white)
 draw_rectangle(X_MARGIN, Y_MARGIN, room_width - X_MARGIN, room_height - Y_MARGIN, true)
 draw_set_font(font1)
 // Draw the number of lives on the screen.
 draw_text(x, y, "Lives: " + string(lives))
+
+// Draw the scoreboard
+draw_text(500, y, "Score: " + string(score))
+
 draw_set_font(font0)
 draw_text(35, 35, "Press Enter for the next wave.#Click to build towers.#Right-click to demolish towers.")
 

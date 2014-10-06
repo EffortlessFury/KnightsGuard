@@ -87,7 +87,10 @@ if (hp &lt;= 0)
 {
     path_delete(path)
     instance_destroy()
-    score += scoreModifier
+    score += 100
+    
+    // score += scoreModifier
+    // Jon 10/6: Where's the scoreModifier?
 }
 </string>
           </argument>
