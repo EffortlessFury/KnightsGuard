@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spd = 7.5
+            <string>spd = 15
 atk = 5
 
 randA = random_range(-15, 15)
