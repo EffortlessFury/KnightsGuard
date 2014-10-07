@@ -31,7 +31,7 @@ hp = 10
 image_xscale = -1
 
 // How many points to add to player's score upon death.
-scoreModifier = o_control.wave + 9
+scoreModifier = o_control.wave + 99
 
 path = path_add()
 showPath = true
@@ -87,10 +87,7 @@ if (hp &lt;= 0)
 {
     path_delete(path)
     instance_destroy()
-    score += 100
-    
-    // score += scoreModifier
-    // Jon 10/6: Where's the scoreModifier?
+    score += scoreModifier
 }
 </string>
           </argument>
