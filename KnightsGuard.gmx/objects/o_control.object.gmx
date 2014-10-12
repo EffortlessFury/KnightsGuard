@@ -62,11 +62,8 @@ waveText = false
 newEnemy = instance_create(o_spawn.x, o_spawn.y, o_enemy)
 with (newEnemy)
 {
-    if (mp_grid_path(global.grid, path, x, y, o_goal.x, o_goal.y, true))
-    {
         showPath = true
         path_start(path, spd, 0, false)
-    }
 }
 
 global.enemiesInQueue--

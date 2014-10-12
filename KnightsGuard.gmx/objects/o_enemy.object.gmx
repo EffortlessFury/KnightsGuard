@@ -33,7 +33,8 @@ image_xscale = -1
 // How many points to add to player's score upon death.
 scoreModifier = o_control.wave + 99
 
-path = path_add()
+// *WIP* Choose starting path here.
+path = path0
 showPath = true
 </string>
           </argument>
@@ -83,6 +84,14 @@ showPath = true
             <string>//move_towards_point(o_player.x, o_player.y, spd)
 
 // Death.
+
+// *WIP* create switch case for choosing new paths and setting them here.
+if(path == path0 &amp;&amp; path_position == 1)
+{
+    path = path1
+    path_start(path, spd, 0, false)
+}
+
 if (hp &lt;= 0)
 {
     path_delete(path)
