@@ -23,14 +23,10 @@
   </fonts>
   <objects name="objects">
     <object>objects\o_bullet</object>
-    <object>objects\o_bullet2</object>
     <object>objects\o_control</object>
     <object>objects\o_enemy</object>
-    <object>objects\o_enemy2</object>
-    <object>objects\o_player</object>
     <object>objects\o_goal</object>
     <object>objects\o_spawn</object>
-    <object>objects\o_spawn2</object>
     <object>objects\o_tower</object>
   </objects>
   <rooms name="rooms">

@@ -82,23 +82,12 @@ if (canShoot)
 {
     canShoot = false // Toggle shooting off until tower reloads.
     nearestEnemy = instance_nearest(x, y, o_enemy)
-    blueEnemy = instance_nearest(x, y, o_enemy2)
     
     redEnemyDistance = distance_to_object(nearestEnemy);
-    blueEnemyDistance = distance_to_object(blueEnemy);
     
     // Fire at the closest enemy
-    if(redEnemyDistance &lt;= blueEnemyDistance)
-    {
-        if (redEnemyDistance &lt; 300) {
-            bullet = instance_create(x, y - 42, o_bullet) // y - 42 because the origin is at the tower's base, but we want the projectile to shoot from the top of the tower.
-        }
-    }
-    else
-    {
-        if (blueEnemyDistance &lt; 300) {
-            bullet = instance_create(x, y - 42, o_bullet2)
-        }
+    if (redEnemyDistance &lt; 300) {
+        bullet = instance_create(x, y - 42, o_bullet) // y - 42 because the origin is at the tower's base, but we want the projectile to shoot from the top of the tower.
     }
     
     alarm[0] = room_speed*2 // Let tower shoot every 2 seconds.
