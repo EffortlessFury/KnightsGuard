@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (other) {instance_destroy()}
+            <string>// Katie: Also can be done through inheritance with one o_enemy, blahblah.
+with (other) {instance_destroy()}
 lives--
 if (score &gt;= 200)
     score -= 200

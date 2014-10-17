@@ -10,8 +10,10 @@
     <sprite>sprites\s_enemy</sprite>
     <sprite>sprites\s_enemy2</sprite>
     <sprite>sprites\s_goal</sprite>
+    <sprite>sprites\s_mount</sprite>
     <sprite>sprites\s_player</sprite>
     <sprite>sprites\s_spawn</sprite>
+    <sprite>sprites\s_studentunion</sprite>
     <sprite>sprites\s_tower</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -25,13 +27,17 @@
     <object>objects\o_bullet</object>
     <object>objects\o_bullet2</object>
     <object>objects\o_control</object>
-    <object>objects\o_enemy</object>
-    <object>objects\o_enemy2</object>
-    <object>objects\o_player</object>
     <object>objects\o_goal</object>
+    <object>objects\o_mount</object>
+    <object>objects\o_player</object>
     <object>objects\o_spawn</object>
     <object>objects\o_spawn2</object>
+    <object>objects\o_studentunion</object>
     <object>objects\o_tower</object>
+    <objects name="Enemies">
+      <object>objects\o_enemy</object>
+      <object>objects\o_enemy2</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
@@ -41,7 +47,7 @@
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
-    <constant name="Y_MARGIN">32</constant>
+    <constant name="Y_MARGIN">64</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
