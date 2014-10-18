@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>spd = 6.5
-atk = 5
+atk = 6
 fading = false
 
 nearestEnemy = instance_nearest(x, y, o_enemy)

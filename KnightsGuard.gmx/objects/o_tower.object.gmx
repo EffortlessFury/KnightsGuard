@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>health = 50 // Katie: unnecessary; towers don't have health anymore
-canShoot = true
+            <string>canShoot = true
 rectangleOverlay = false
 
 // Randomize the tower's color a tiny bit upon creation.
@@ -82,28 +81,11 @@ depth = -y
 if (canShoot)
 {
     canShoot = false // Toggle shooting off until tower reloads.
-    
-    // Katie: Starting from here and down, this can all be done using inheritance, making o_enemy a parent enemy and having all other enemies (o_melee, etc.) inherit from it, then doing the checks on o_enemy
     nearestEnemy = instance_nearest(x, y, o_enemy)
-    blueEnemy = instance_nearest(x, y, o_enemy2)
-    
-    redEnemyDistance = distance_to_object(nearestEnemy);
-    blueEnemyDistance = distance_to_object(blueEnemy);
-    
-    // Fire at the closest enemy
-    if(redEnemyDistance &lt;= blueEnemyDistance) // Katie: So currently, only o_bullet attacks the red enemy.
+    if (distance_to_object(nearestEnemy) &lt; 300)
     {
-        if (redEnemyDistance &lt; 300) {
-            bullet = instance_create(x, y - 42, o_bullet) // y - 42 because the origin is at the tower's base, but we want the projectile to shoot from the top of the tower.
-        }
+        bullet = instance_create(x, y - 42, o_bullet)
     }
-    else // Katie: Currently, only o_bullet2 attacks the blue enemy.
-    {
-        if (blueEnemyDistance &lt; 300) {
-            bullet = instance_create(x, y - 42, o_bullet2)
-        }
-    }
-    
     alarm[0] = room_speed*2 // Let tower shoot every 2 seconds.
 }
 </string>
