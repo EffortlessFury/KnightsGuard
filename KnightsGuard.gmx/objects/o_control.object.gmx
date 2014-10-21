@@ -178,12 +178,13 @@ draw_set_color(c_black)
 draw_rectangle(X_MARGIN, Y_MARGIN + 2, room_width - X_MARGIN, room_height - Y_MARGIN, 1)
 draw_set_color(c_white)
 draw_set_font(font1)
-// Draw the player's grade (proportional to the student union's health) on the screen.
+draw_text(x, y, "Lives: " + string(lives))
+/*// Draw the player's grade (proportional to the student union's health) on the screen.
 draw_text(x, y, "Grade: " + string(grade))
 // Draw the player's score.
 draw_text(0, 20, "Score: " + string(score))
 // Draw the player's lives.
-draw_text(0, 40, "Lives: " + string(lives))
+draw_text(0, 40, "Lives: " + string(lives))*/
 // Draw tutorial text.
 draw_set_font(font0)
 draw_text(35, 67, "Press Enter for the next wave.#Click to build towers.#Right-click to demolish towers.")
