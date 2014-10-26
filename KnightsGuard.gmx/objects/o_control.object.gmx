@@ -73,8 +73,8 @@ for (i = 0; i &lt; 6; i++)
           <argument>
             <kind>1</kind>
             <string>/// Spawn enemies.
-if (wave % 2 != 0) {newEnemy = instance_create(o_assignmentspawn.x, o_assignmentspawn.y, o_assignment)}
-else {newEnemy = instance_create(o_examspawn.x, o_examspawn.y, o_exam)}
+if (wave % 2 != 0) {newEnemy = instance_create(o_assignmentspawn.x, o_assignmentspawn.y, A0)}
+else {newEnemy = instance_create(o_examspawn.x, o_examspawn.y, A3)}
 with (newEnemy)
 {
     if (mp_grid_path(global.grid, path, x, y, o_goal.x, o_goal.y, true))

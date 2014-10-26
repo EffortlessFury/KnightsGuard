@@ -34,18 +34,21 @@
     <object>objects\o_studentunion</object>
     <object>objects\o_tower</object>
     <objects name="Enemies">
-      <object>objects\o_assignment</object>
-      <object>objects\o_exam</object>
-    </objects>
-    <objects name="Parents">
       <object>objects\o_enemy</object>
+      <objects name="Land Locked Enemies">
+        <object>objects\o_assignmentParent</object>
+        <objects name="Assignments">
+          <object>objects\A0</object>
+          <object>objects\A3</object>
+        </objects>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
   <constants number="5">
-    <constant name="GM_build_date">41919.0115146528</constant>
+    <constant name="GM_build_date">41938.8596689815</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
