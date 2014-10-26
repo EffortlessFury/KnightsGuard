@@ -27,14 +27,14 @@
             <kind>1</kind>
             <string>event_inherited()
 
-spd_array[0] = 10;
-spd_array[1] = 5;
-spd_array[2] = 2.5;
-spd_array[3] = 1.25;
+spd_array[0] = 5;
+spd_array[1] = 4;
+spd_array[2] = 3;
+spd_array[3] = 1;
 hp_array[0] = 5;
-hp_array[1] = 10
-hp_array[2] = 20;
-hp_array[3] = 40;
+hp_array[1] = 10;
+hp_array[2] = 15;
+hp_array[3] = 30;
 </string>
           </argument>
         </arguments>

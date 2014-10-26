@@ -48,7 +48,7 @@
     <room>rooms\room0</room>
   </rooms>
   <constants number="5">
-    <constant name="GM_build_date">41938.8596689815</constant>
+    <constant name="GM_build_date">41938.9550834028</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
