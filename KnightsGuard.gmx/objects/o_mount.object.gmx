@@ -49,7 +49,7 @@ cantMount = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>towerHere = instance_position(x, y, o_tower)
+            <string>towerHere = instance_position(x, y, o_towerParent)
 if (towerHere)
 {
     with (towerHere) {instance_destroy()}
@@ -77,10 +77,10 @@ if (towerHere)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!position_meeting(x, y, o_tower))
+            <string>if (!position_meeting(x, y, o_theatre))
 {
     canMount = false
-    instance_create(x, y, o_tower)
+    instance_create(x, y, o_theatre)
 }
 else {cantMount = true}
 </string>

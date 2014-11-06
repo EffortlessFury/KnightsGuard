@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>event_inherited()
 
-spd = spd_array[0];
-hp = hp_array[0];
+spd = spd_array[ASSIGNMENT_TYPE.test];
+hp = hp_array[ASSIGNMENT_TYPE.test];
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Initialize grid.
+            <string>//global variables
+global.firstKillAchieved = false;
+
+// Initialize grid.
 global.grid = mp_grid_create(X_MARGIN, Y_MARGIN, ceil(room_width/CELL_SIZE) - 2*X_MARGIN/CELL_SIZE, ceil(room_height/CELL_SIZE) - 2*Y_MARGIN/CELL_SIZE, CELL_SIZE, CELL_SIZE)
 
 // Spawning variables. // Katie: Grade? Score? Lives? Which ones are we using?
@@ -73,8 +76,8 @@ for (i = 0; i &lt; 6; i++)
           <argument>
             <kind>1</kind>
             <string>/// Spawn enemies.
-if (wave % 2 != 0) {newEnemy = instance_create(o_assignmentspawn.x, o_assignmentspawn.y, A0)}
-else {newEnemy = instance_create(o_examspawn.x, o_examspawn.y, A3)}
+if (wave % 2 != 0) {newEnemy = instance_create(o_assignmentspawn.x, o_assignmentspawn.y, o_assignment_homework)}
+else {newEnemy = instance_create(o_examspawn.x, o_examspawn.y, o_assignment_bigtest)}
 with (newEnemy)
 {
     if (mp_grid_path(global.grid, path, x, y, o_goal.x, o_goal.y, true))
@@ -133,7 +136,7 @@ if (global.enemiesInQueue &gt; 0) {alarm[1] = spawnTime} // Continue spawning if
             <string>// Draw rectangle overlay if player clicks on tower.
 if (mouse_check_button_pressed(mb_left))
 {
-    currentTower = instance_position(mouse_x, mouse_y, o_tower)
+    currentTower = instance_position(mouse_x, mouse_y, o_towerParent)
     if (currentTower)
     {
         with (currentTower) {rectangleOverlay = !rectangleOverlay} // Toggle showing rectangle overlay.

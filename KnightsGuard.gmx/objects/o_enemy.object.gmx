@@ -84,6 +84,10 @@ showPath = true
             <string>// Death.
 if (hp &lt;= 0)
 {
+    if(global.firstKillAchieved = false) {
+        global.firstKillAchieved = true
+        achievement_post("CgkI6eqxs_UYEAIQAA", 100)
+    }
     path_delete(path)
     instance_destroy()
     score += scoreModifier
