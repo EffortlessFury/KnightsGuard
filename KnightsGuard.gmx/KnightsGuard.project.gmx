@@ -15,8 +15,13 @@
     <sprite>sprites\s_spawn</sprite>
     <sprite>sprites\s_studentunion</sprite>
     <sprite>sprites\s_tower</sprite>
+    <sprite>sprites\s_loading</sprite>
+    <sprite>sprites\s_start</sprite>
+    <sprite>sprites\s_scoreboard</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\titleBackground</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="gameSyncHS">
@@ -82,13 +87,26 @@
         <object>objects\o_theatre</object>
       </objects>
     </objects>
+    <object>objects\objNoHighScore</object>
+    <object>objects\objPlayer</object>
+    <object>objects\objRegistration</object>
+    <object>objects\objScoreCompare</object>
+    <object>objects\objScoreController</object>
+    <object>objects\objScoreSubmitted</object>
+    <object>objects\objSubmitRecord</object>
+    <object>objects\o_startButton</object>
+    <object>objects\o_scoreButton</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\mainScreen</room>
     <room>rooms\scoreBoard</room>
+    <room>rooms\titleScreen</room>
+    <room>rooms\rmHighScore</room>
+    <room>rooms\rmNoHighScore</room>
+    <room>rooms\rmRegister</room>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41951.8702089931</constant>
+    <constant name="GM_build_date">41951.8966207407</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>

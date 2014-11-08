@@ -25,18 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Stats.
-spd = 0
-hp = 0
-image_xscale = -1
+            <string>// End of Game... Lets pull the lowest score from the database to see if you earned a spot!
 
-// How many points to add to player's score upon death.
-scoreModifier = o_control.wave + 9
-global.uscore += scoreModifier;
+gsLowest_Score()
+lscore = 0;
 
-//Debug
-path = path_add()
-showPath = true
 </string>
           </argument>
         </arguments>
@@ -59,13 +52,12 @@ showPath = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_blend = c_white
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="62">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -82,48 +74,27 @@ showPath = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Death.
-if (hp &lt;= 0)
-{
-    if(global.firstKillAchieved = false) {
-        global.firstKillAchieved = true
-        
-        // achievement_post("CgkI6eqxs_UYEAIQAA", 100)
-        // Nov. 8: ^ This was causing a compile error at the moment
-    }
-    path_delete(path)
-    instance_destroy()
-    score += scoreModifier
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self()
+            <string>/*gsLowest_Score will return a ds_list called lowscore with 2 entries, 0 
+will be the lowest score, 1 will be the row number of the lowest score. */
 
-if (showPath)
-{
-    draw_set_color(c_yellow)
-    draw_path(path, 0, 0, true)
-}
+gsLowest_Score_Result(); //Get result of lows score as a ds_list
+//alarm[0] = 15
+
+global.lscore = ds_list_find_value(lowscore,0); //assign the value of list item 0, then low score, to a variable
+global.lscoreRow = ds_list_find_value(lowscore,1); // Go ahead and grab the row number just in case
+ds_list_destroy(lowscore); // We are done with this ds_list - free it from memory
+
+// Now lets determne if we made the cut!
+
+if (global.uscore &gt; lscore)//If players score is higher than the lowest stored score...
+    {
+    room_goto(rmHighScore);// We will add the players score to the list!
+    }
+else
+    {
+    room_goto(rmNoHighScore); //Otherwise tell him he sucked
+    }
+
 </string>
           </argument>
         </arguments>

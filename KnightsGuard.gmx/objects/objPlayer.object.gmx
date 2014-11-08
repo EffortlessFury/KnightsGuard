@@ -25,18 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Stats.
-spd = 0
-hp = 0
-image_xscale = -1
-
-// How many points to add to player's score upon death.
-scoreModifier = o_control.wave + 9
-global.uscore += scoreModifier;
-
-//Debug
-path = path_add()
-showPath = true
+            <string>// Variable to determine if the player can shoot or not. Used to set a delay.
+canshoot = 1;
 </string>
           </argument>
         </arguments>
@@ -59,7 +49,8 @@ showPath = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_blend = c_white
+            <string>//Reset variable so player cna fire
+canshoot = 1;
 </string>
           </argument>
         </arguments>
@@ -82,25 +73,30 @@ showPath = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Death.
-if (hp &lt;= 0)
-{
-    if(global.firstKillAchieved = false) {
-        global.firstKillAchieved = true
-        
-        // achievement_post("CgkI6eqxs_UYEAIQAA", 100)
-        // Nov. 8: ^ This was causing a compile error at the moment
+            <string>// Movement and firing code for player. Not important to example.
+if (keyboard_check(vk_left))
+    {
+    x -= 8;
     }
-    path_delete(path)
-    instance_destroy()
-    score += scoreModifier
-}
+if (keyboard_check(vk_right))
+    {
+    x += 8;
+    }
+if (keyboard_check(vk_space))
+    {
+    if (canshoot = 1)
+        {
+        instance_create(x,y,objBullet);
+        canshoot = 0;
+        alarm[0] = 10;
+        }
+    }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="5" enumb="38">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -117,13 +113,35 @@ if (hp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>//Increase score by 100 points.
 
-if (showPath)
-{
-    draw_set_color(c_yellow)
-    draw_path(path, 0, 0, true)
-}
+global.uscore += 100;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="69">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Ends game and creates the object to compare your score against database records
+//to see if you are eligible to post a high score or not.
+
+instance_create(200,200,objScoreCompare);
 </string>
           </argument>
         </arguments>
@@ -141,5 +159,8 @@ if (showPath)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

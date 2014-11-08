@@ -25,76 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Stats.
-spd = 0
-hp = 0
-image_xscale = -1
-
-// How many points to add to player's score upon death.
-scoreModifier = o_control.wave + 9
-global.uscore += scoreModifier;
-
-//Debug
-path = path_add()
-showPath = true
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_blend = c_white
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// Death.
-if (hp &lt;= 0)
-{
-    if(global.firstKillAchieved = false) {
-        global.firstKillAchieved = true
-        
-        // achievement_post("CgkI6eqxs_UYEAIQAA", 100)
-        // Nov. 8: ^ This was causing a compile error at the moment
-    }
-    path_delete(path)
-    instance_destroy()
-    score += scoreModifier
-}
+            <string>keyboard_string = "";
 </string>
           </argument>
         </arguments>
@@ -117,13 +48,42 @@ if (hp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>draw_set_color(c_black); //Set font color to black for white background
+draw_text(50,208,keyboard_string); // draw keyboard string
+draw_set_color(c_white); // Set font color back to white
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.uname = keyboard_string; //Set the username to the keyboard string the player entered
+global.uid = gsCreate_ID(9); // Create a user ID for the player
 
-if (showPath)
-{
-    draw_set_color(c_yellow)
-    draw_path(path, 0, 0, true)
-}
+//Write this new info to an INI file
+ini_open("yaai.ini")
+ini_write_string("save","name", string(global.uname));
+ini_write_real("save","id",real(global.uid));
+ini_close();
+
+room_goto(rmInstructions);
+
 </string>
           </argument>
         </arguments>

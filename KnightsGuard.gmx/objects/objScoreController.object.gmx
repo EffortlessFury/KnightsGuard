@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,24 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Stats.
-spd = 0
-hp = 0
-image_xscale = -1
+            <string>/// Initializes score values
 
-// How many points to add to player's score upon death.
-scoreModifier = o_control.wave + 9
-global.uscore += scoreModifier;
+// Retrieve players highest stored score and overall highest stored score from database
 
-//Debug
-path = path_add()
-showPath = true
+// gsGlobal_Highest_Score();// Retrieve overall highest score from database
+// gsPlayer_Highest_Score(global.uid); // Retrieve players current highest score from database
+
+// Initialize variables to 0 for later use.
+global.phighscore = 0;
+global.ghighscore = 0;
+global.uscore = 0; // Current score for this game... initialize to 0 for game start.
+global.lscoreRow = 0; // Will be used later to store the row number of the lowest score.
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="7" enumb="62">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,42 +59,11 @@ showPath = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_blend = c_white
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// Death.
-if (hp &lt;= 0)
-{
-    if(global.firstKillAchieved = false) {
-        global.firstKillAchieved = true
-        
-        // achievement_post("CgkI6eqxs_UYEAIQAA", 100)
-        // Nov. 8: ^ This was causing a compile error at the moment
-    }
-    path_delete(path)
-    instance_destroy()
-    score += scoreModifier
-}
+            <string>// Retrieve the call backs for the global and players highest scores from the database
+// and set them to variables for use in game.
+
+global.ghighscore = gsGlobal_Highest_Score_Result();
+global.phighscore = gsPlayer_Highest_Score_Result();
 </string>
           </argument>
         </arguments>
@@ -117,13 +86,12 @@ if (hp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
-
-if (showPath)
-{
-    draw_set_color(c_yellow)
-    draw_path(path, 0, 0, true)
-}
+            <string>/// Draw a "HUD"
+draw_set_color(c_white);
+draw_text(10,25, "Score: " + string(global.uscore));
+//draw_text(10,30,"High Score: " + string(global.ghighscore)); //global highest score from database
+// draw_text(10,45,"Your High Score: " + string(global.phighscore)); // Players highest score from database
+// draw_text(20,460,"Your ID: " + string(global.uid)); // USer ID
 </string>
           </argument>
         </arguments>
