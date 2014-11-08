@@ -85,9 +85,10 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\scoreBoard</room>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41951.8546530903</constant>
+    <constant name="GM_build_date">41951.8702089931</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
