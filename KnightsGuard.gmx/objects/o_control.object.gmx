@@ -182,6 +182,7 @@ draw_rectangle(X_MARGIN, Y_MARGIN + 2, room_width - X_MARGIN, room_height - Y_MA
 draw_set_color(c_white)
 draw_set_font(font1)
 draw_text(x, y, "Lives: " + string(lives))
+draw_text(x, 25, "Score: " + string(global.uscore));
 /*// Draw the player's grade (proportional to the student union's health) on the screen.
 draw_text(x, y, "Grade: " + string(grade))
 // Draw the player's score.

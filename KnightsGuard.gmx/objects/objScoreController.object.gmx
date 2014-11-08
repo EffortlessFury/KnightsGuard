@@ -87,8 +87,8 @@ global.phighscore = gsPlayer_Highest_Score_Result();
           <argument>
             <kind>1</kind>
             <string>/// Draw a "HUD"
-draw_set_color(c_white);
-draw_text(10,25, "Score: " + string(global.uscore));
+// draw_set_color(c_white);
+// draw_text(10,25, "Score: " + string(global.uscore));
 //draw_text(10,30,"High Score: " + string(global.ghighscore)); //global highest score from database
 // draw_text(10,45,"Your High Score: " + string(global.phighscore)); // Players highest score from database
 // draw_text(20,460,"Your ID: " + string(global.uid)); // USer ID

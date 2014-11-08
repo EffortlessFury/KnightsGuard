@@ -98,15 +98,15 @@
     <object>objects\o_scoreButton</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\titleScreen</room>
     <room>rooms\mainScreen</room>
     <room>rooms\scoreBoard</room>
-    <room>rooms\titleScreen</room>
     <room>rooms\rmHighScore</room>
     <room>rooms\rmNoHighScore</room>
     <room>rooms\rmRegister</room>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41951.8966207407</constant>
+    <constant name="GM_build_date">41951.9660443866</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
