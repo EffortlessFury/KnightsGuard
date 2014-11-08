@@ -18,6 +18,38 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="gameSyncHS">
+      <scripts name="Functions">
+        <script>scripts\gsGet_List.gml</script>
+        <script>scripts\gsGet_Rank.gml</script>
+        <script>scripts\gsLowest_Score.gml</script>
+        <script>scripts\gsGlobal_Highest_Score.gml</script>
+        <script>scripts\gsPlayer_Highest_Score.gml</script>
+        <script>scripts\gsInsert_Record_M.gml</script>
+        <script>scripts\gsInsert_Record_S.gml</script>
+        <script>scripts\gsGet_RowCount.gml</script>
+        <script>scripts\gsReplace_Row.gml</script>
+        <script>scripts\gsCheck_ID.gml</script>
+      </scripts>
+      <scripts name="Utility">
+        <script>scripts\gsCreate_ID.gml</script>
+        <script>scripts\gsString_Explode.gml</script>
+      </scripts>
+      <scripts name="HTTP">
+        <script>scripts\gsCheck_ID_Result.gml</script>
+        <script>scripts\gsGet_List_Result.gml</script>
+        <script>scripts\gsGet_RowCount_Result.gml</script>
+        <script>scripts\gsGlobal_Highest_Score_Result.gml</script>
+        <script>scripts\gsInsert_Record_M_Result.gml</script>
+        <script>scripts\gsInsert_Record_S_Result.gml</script>
+        <script>scripts\gsLowest_Score_Result.gml</script>
+        <script>scripts\gsPlayer_Highest_Score_Result.gml</script>
+        <script>scripts\gsReplace_Row_Result.gml</script>
+        <script>scripts\gsGet_Rank_Result.gml</script>
+      </scripts>
+    </scripts>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
     <font>fonts\font1</font>
@@ -54,12 +86,14 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="5">
-    <constant name="GM_build_date">41947.6137484028</constant>
+  <constants number="7">
+    <constant name="GM_build_date">41951.8546530903</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
     <constant name="Y_MARGIN">64</constant>
+    <constant name="mySEED">10</constant>
+    <constant name="myURL">"http://www.tiffjon.com/"</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
