@@ -21,6 +21,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\titleBackground</background>
+    <background>background\scoreBackground</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -106,7 +107,7 @@
     <room>rooms\rmRegister</room>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41951.9660443866</constant>
+    <constant name="GM_build_date">41952.0042378588</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
