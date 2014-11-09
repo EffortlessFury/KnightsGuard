@@ -36,11 +36,15 @@
       <object>objects\o_enemy</object>
       <objects name="Land Locked Enemies">
         <object>objects\o_assignmentParent</object>
+        <object>objects\o_impedimentParent</object>
         <objects name="Assignments">
           <object>objects\o_assignment_homework</object>
           <object>objects\o_object_test</object>
           <object>objects\o_assignment_quiz</object>
           <object>objects\o_assignment_bigtest</object>
+        </objects>
+        <objects name="Impediments">
+          <object>objects\o_impediment_speed</object>
         </objects>
       </objects>
     </objects>
@@ -49,6 +53,9 @@
         <object>objects\o_towerParent</object>
         <object>objects\o_theatre</object>
       </objects>
+    </objects>
+    <objects name="Buildings">
+      <object>objects\o_buildingParent</object>
     </objects>
   </objects>
   <rooms name="rooms">
