@@ -24,7 +24,7 @@
     <font>fonts\font2</font>
   </fonts>
   <objects name="objects">
-    <object>objects\o_bullet</object>
+    <object>objects\o_directionalBullet</object>
     <object>objects\o_control</object>
     <object>objects\o_goal</object>
     <object>objects\o_mount</object>

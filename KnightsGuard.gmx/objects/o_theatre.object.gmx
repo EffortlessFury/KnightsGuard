@@ -27,7 +27,49 @@
             <kind>1</kind>
             <string>event_inherited()
 
-fireSpeed = room_speed * 2
+fireSpeed = room_speed / 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited()
+if (canShoot)
+{
+    canShoot = false // Toggle shooting off until tower reloads.
+    nearestEnemy = instance_nearest(x, y, o_enemy)
+    if (distance_to_object(nearestEnemy) &lt; 300) //Need array for distances across upgrades
+    {
+        bullet = instance_create(x, y - 42, o_directionalBullet)
+        bullet.speed = 15; //I think this bullet speed should remain constant among all tower upgrades.
+        bullet.atk = 6.5; //Need array for damage across upgrades
+        time = sqrt(sqr(nearestEnemy.x - bullet.x) + sqr(nearestEnemy.y - bullet.y))/bullet.speed; //work out how long the bullet will take to reach it
+        dst = nearestEnemy.spd*time; //work out how far the enemy will travel in this time
+        xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
+        yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
+        
+        //Need to apply gauss here
+        bullet.direction = point_direction(bullet.x,bullet.y,xx,yy);
+    }
+    alarm[0] = fireSpeed
+}
 </string>
           </argument>
         </arguments>

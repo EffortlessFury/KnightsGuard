@@ -90,21 +90,8 @@ image_blend = make_color_hsv(random_range(0, 255), 145, 255)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Need to seperate damage from bullet, put it in tower
-if (canShoot)
-{
-    canShoot = false // Toggle shooting off until tower reloads.
-    nearestEnemy = instance_nearest(x, y, o_enemy)
-    if (distance_to_object(nearestEnemy) &lt; 300)
-    {
-        bullet = instance_create(x, y - 42, o_bullet)
-        bullet.spd = 9.5;
-        bullet.atk = 6.5;
-        bullet.targetedPoint = nearestEnemy;
-        with(bullet) event_user(0);
-    }
-    alarm[0] = fireSpeed
-}
+            <string>// Order objects higher on the screen behind those lower on the screen.
+depth = -y;
 </string>
           </argument>
         </arguments>
