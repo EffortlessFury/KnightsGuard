@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/*This checks if a save game ini file exists. If so it displays both the 
 new game and resume buttons. If no INI file exists then it only displays 
-the New Game button. */
+the New Game button. 
 if (file_exists("yaai.ini")) //Check if file exists
     {
     ini_open("yaai.ini") //Open the ini file
@@ -43,6 +43,8 @@ else
     // User does not exist, so go to registration screen
     room_goto(registerScreen);
     }
+*/    
+room_goto(registerScreen);
 </string>
           </argument>
         </arguments>
