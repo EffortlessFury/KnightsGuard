@@ -327,11 +327,8 @@ instance_create(200,200,objScoreCompare);
             <kind>1</kind>
             <string>/// Pause the game!
 
-// Deactivate everything
-instance_deactivate_all(false);
-
-// Activate pause screen
-instance_create(x, y, o_unpause);
+/// Create the pause object, thus pausing the game
+instance_create(0,0,o_pause);
 </string>
           </argument>
         </arguments>
