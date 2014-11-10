@@ -26,7 +26,7 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <scripts name="gameSyncHS">
+    <scripts name="onlineScoreboard">
       <scripts name="Functions">
         <script>scripts\gsGet_List.gml</script>
         <script>scripts\gsGet_Rank.gml</script>
@@ -73,6 +73,8 @@
     <object>objects\o_assignmentspawn</object>
     <object>objects\o_examspawn</object>
     <object>objects\o_studentunion</object>
+    <object>objects\o_startButton</object>
+    <object>objects\o_scoreButton</object>
     <objects name="Enemies">
       <object>objects\o_enemy</object>
       <objects name="Land Locked Enemies">
@@ -85,36 +87,40 @@
         </objects>
       </objects>
     </objects>
+    <objects name="Scoreboards">
+      <object>objects\checkInternet</object>
+      <object>objects\objResume</object>
+      <object>objects\objNewGame</object>
+      <object>objects\objMenuControl</object>
+      <object>objects\objSubmitRecord</object>
+      <object>objects\objScoreSubmitted</object>
+      <object>objects\objScoreCompare</object>
+      <object>objects\objRegistration</object>
+      <object>objects\objPlayer</object>
+      <object>objects\objNoHighScore</object>
+      <object>objects\objScoreController</object>
+    </objects>
     <objects name="Towers">
       <objects name="Automated Towers">
         <object>objects\o_towerParent</object>
         <object>objects\o_theatre</object>
       </objects>
     </objects>
-    <object>objects\objScoreController</object>
-    <object>objects\objNoHighScore</object>
-    <object>objects\objPlayer</object>
-    <object>objects\objRegistration</object>
-    <object>objects\objScoreCompare</object>
-    <object>objects\objScoreSubmitted</object>
-    <object>objects\objSubmitRecord</object>
-    <object>objects\o_startButton</object>
-    <object>objects\o_scoreButton</object>
-    <object>objects\objMenuControl</object>
-    <object>objects\objNewGame</object>
-    <object>objects\objResume</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\registerScreen</room>
     <room>rooms\titleScreen</room>
     <room>rooms\mainScreen</room>
+    <room>rooms\internetCheck</room>
     <room>rooms\scoreBoard</room>
     <room>rooms\userCheck</room>
-    <room>rooms\rmHighScore</room>
-    <room>rooms\rmNoHighScore</room>
+    <rooms name="Experimental">
+      <room>rooms\rmHighScore</room>
+      <room>rooms\rmNoHighScore</room>
+    </rooms>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41953.115974537</constant>
+    <constant name="GM_build_date">41953.7076476968</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
