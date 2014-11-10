@@ -140,24 +140,25 @@ gsGet_List_Result(10);
 
 if (list_loaded == 0)
     {
-    draw_sprite(sprLoading,-1,room_width/2,room_height/2);
+    draw_sprite(s_loading,-1,room_width/2,room_height/2);
     }
 else
     {
-    skip = 120 // This is the starting Y location of the table, and will be used to incriment the space between lines
+    draw_set_font(font_score);
+    skip = 220 // This is the starting Y location of the table, and will be used to incriment the space between lines
     for (a=0; a&lt;20 a+=2;) //&lt;&lt; Notice we are incrimenting by 2 to only get the EVEN lines
         {
-        skip+=20; //The spacing bwtween lines
-        draw_text(185,skip,ds_list_find_value(name_list,a)); //Loop through all the EVEN indexes for the names only
+        skip+=30; //The spacing bwtween lines
+        draw_text(285,skip,ds_list_find_value(name_list,a)); //Loop through all the EVEN indexes for the names only
         }
 
-    skip2 = 120
+    skip2 = 220
     for (b=1; b&lt;20 b+=2;) //&lt;&lt; Notice we start on 1 and incriment by 2 to get only ODD lines.
         {
-        skip2+=20;
-        draw_text(360,skip2,ds_list_find_value(name_list,b)); //Loop through all the ODD indexes for the scores only.
+        skip2+=30;
+        draw_text(500,skip2,ds_list_find_value(name_list,b)); //Loop through all the ODD indexes for the scores only.
         }
-    draw_text(170,420,"Press &lt;SPACE&gt; to restart!");
+    draw_text(220,620,"Press &lt;SPACE&gt; to restart!");
     }
 </string>
           </argument>

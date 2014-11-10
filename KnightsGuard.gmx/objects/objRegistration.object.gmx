@@ -48,9 +48,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black); //Set font color to black for white background
-draw_text(50,208,keyboard_string); // draw keyboard string
-draw_set_color(c_white); // Set font color back to white
+            <string>draw_set_color(c_black); // Write name in color: white
+draw_set_font(font_score);
+draw_text(403,410,keyboard_string); // draw keyboard string
+draw_text(335,500,"Type your name and press Enter!"); // draw keyboard string
 </string>
           </argument>
         </arguments>
@@ -82,7 +83,7 @@ ini_write_string("save","name", string(global.uname));
 ini_write_real("save","id",real(global.uid));
 ini_close();
 
-room_goto(rmInstructions);
+room_goto(titleScreen);
 
 </string>
           </argument>

@@ -61,6 +61,8 @@
     <font>fonts\font0</font>
     <font>fonts\font1</font>
     <font>fonts\font2</font>
+    <font>fonts\Bebas</font>
+    <font>fonts\font_score</font>
   </fonts>
   <objects name="objects">
     <object>objects\o_bullet</object>
@@ -107,6 +109,7 @@
     <object>objects\objResume</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\userCheck</room>
     <room>rooms\registerScreen</room>
     <room>rooms\titleScreen</room>
     <room>rooms\mainScreen</room>
@@ -116,8 +119,8 @@
     <room>rooms\rmRegister</room>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41952.9467087384</constant>
-    <constant name="GM_version">'1.0.0.0'</constant>
+    <constant name="GM_build_date">41953.0285134606</constant>
+    <constant name="GM_version">'1.0.0.1'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
     <constant name="Y_MARGIN">64</constant>

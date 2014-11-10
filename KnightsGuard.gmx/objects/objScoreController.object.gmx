@@ -29,8 +29,8 @@
 
 // Retrieve players highest stored score and overall highest stored score from database
 
-// gsGlobal_Highest_Score();// Retrieve overall highest score from database
-// gsPlayer_Highest_Score(global.uid); // Retrieve players current highest score from database
+gsGlobal_Highest_Score();// Retrieve overall highest score from database
+gsPlayer_Highest_Score(global.uid); // Retrieve players current highest score from database
 
 // Initialize variables to 0 for later use.
 global.phighscore = 0;

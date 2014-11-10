@@ -30,16 +30,18 @@ new game and resume buttons. If no INI file exists then it only displays
 the New Game button. */
 if (file_exists("yaai.ini")) //Check if file exists
     {
-    instance_create(192,160,objResume); //If so show resume button
-    instance_create(192,220,objNewGame);
     ini_open("yaai.ini") //Open the ini file
     global.uname = ini_read_string("save","name",0); //load user name
     global.uid = ini_read_real("save","id",0); //Load user ID
     ini_close();
+    
+    // User exists, so go to main screen
+    room_goto(titleScreen);
     }
 else
     {
-    instance_create(192,160,objNewGame); // No file, so start a new game
+    // User does not exist, so go to registration screen
+    room_goto(registerScreen);
     }
 </string>
           </argument>
@@ -63,7 +65,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt8bit); //Set the Font for drawing
+            <string>/*
+draw_set_font(fnt8bit); //Set the Font for drawing
 if (file_exists("yaai.ini")) //First see if an ini file exists with user data
     {
     draw_set_color(c_white); // If so, show that data
@@ -74,6 +77,7 @@ else
     draw_set_color(c_white); //If not the show a message that it wasnt found
     draw_text(80,320,"No Service Record Found.")
     }
+*/
 </string>
           </argument>
         </arguments>
