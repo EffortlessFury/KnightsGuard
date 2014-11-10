@@ -90,7 +90,7 @@ else //If it is equal to 10 replace the lowest score.
           <argument>
             <kind>1</kind>
             <string>gsGet_RowCount_Result(); //get result of row count
-alarm[0] = 40; //give time to process result
+alarm[0] = 90; //give time to process result
 </string>
           </argument>
         </arguments>

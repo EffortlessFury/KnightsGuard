@@ -119,8 +119,8 @@
     <room>rooms\rmRegister</room>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41953.0285134606</constant>
-    <constant name="GM_version">'1.0.0.1'</constant>
+    <constant name="GM_build_date">41953.0551591667</constant>
+    <constant name="GM_version">'1.0.0.5'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
     <constant name="Y_MARGIN">64</constant>
