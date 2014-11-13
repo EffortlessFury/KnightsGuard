@@ -34,10 +34,8 @@ enum IMPEDIMENT_TYPE {
     parking_ticket
 }
 
-//Default Speed? Should there be differing buffs vs. speeds?
-
-buffAmount = .5
-buffLength = room_speed * 30 //30 seconds
+buffAmount = .5 //Half damage/speed/range
+buffLength = room_speed * 15 //15 seconds
 </string>
           </argument>
         </arguments>

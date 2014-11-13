@@ -31,7 +31,7 @@
 
 var towerObj; //placeholder for found tower
 
-towerObj.speedMultiplier = buffAmount;
+towerObj.rangeMultiplier = buffAmount;
 towerObj.alarm[1] = buffLength;
 </string>
           </argument>
