@@ -32,15 +32,17 @@ surf = surface_create(view_wview[0], view_hview[0]);
 
 surface_set_target(surf);
 draw_clear_alpha(c_black, 0); // Clears surface.
+
 with(all) 
 { 
   if (visible == true)
   { 
-        x = x-view_xview[0];  y = y-view_yview[0]; // Moves all instances to the top left corner, so they will appear in the correct place on the surface
-        event_perform(ev_draw,0); 
-        x = x+view_xview[0];  y = y+view_yview[0]; // Move the instances back to their original spot.
+        // x = x-view_xview[0];  y = y-view_yview[0]; // Moves all instances to the top left corner, so they will appear in the correct place on the surface
+        // event_perform(ev_draw,0); 
+        // x = x+view_xview[0];  y = y+view_yview[0]; // Move the instances back to their original spot.
   } 
 }   // Draws every visible instance to surface.
+
 surface_reset_target();
 
 instance_deactivate_all(true);
@@ -127,10 +129,10 @@ surface_free(surf); // It's good practice to always clear the surface on room en
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// [OPTIONAL] Draw instructions to the screen
+            <string>/// Draw instructions to the screen
 
-draw_set_color(c_white);
-draw_text( view_wview[0]/2, 50, "GAME PAUSED # Press P to unpause");
+// draw_set_color(c_white);
+// draw_text( view_wview[0]/2, 50, "GAME PAUSED # Press P to unpause");
 </string>
           </argument>
         </arguments>
@@ -155,8 +157,10 @@ draw_text( view_wview[0]/2, 50, "GAME PAUSED # Press P to unpause");
             <kind>1</kind>
             <string>/// Draw the surface to the screen
 
-draw_background(titleBackground,0,0);
+draw_background_stretched(pauseBackground,0,0, 1024, 768);
 
+
+// Attempts to redraw the game in the background, some bugs
 if (surface_exists(surf)){  // Make sure surface exists - if game loses focus, the surface can sometimes be lost.
     draw_surface(surf, view_xview[0], view_yview[0]);
     }
@@ -168,12 +172,13 @@ else
     alarm[0] = 1; // The instances must appear to the screen for 1 step to be redrawn.
     }
 
-
 /// [OPTIONAL] Draws a partially transparent rectangle over everything.
+/*
 draw_set_color(c_black);
 draw_set_alpha(0.5);
 draw_rectangle(view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0],0);
 draw_set_alpha(1);
+*/
 </string>
           </argument>
         </arguments>
@@ -203,6 +208,28 @@ surface_free(surf);
 instance_activate_all(); // Activate all the objects again
 instance_destroy();
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>224</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_another_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>11</kind>
+            <room>titleScreen</room>
           </argument>
         </arguments>
       </action>

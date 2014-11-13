@@ -49,9 +49,8 @@
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_black); // Write name in color: white
-draw_set_font(font_score);
-draw_text(403,410,keyboard_string); // draw keyboard string
-draw_text(335,500,"Type your name and press Enter!"); // draw keyboard string
+draw_set_font(font_player_name);
+draw_text(425,360,keyboard_string); // draw keyboard string
 </string>
           </argument>
         </arguments>

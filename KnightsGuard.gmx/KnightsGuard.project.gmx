@@ -21,11 +21,14 @@
     <sprite>sprites\s_loading</sprite>
     <sprite>sprites\s_start</sprite>
     <sprite>sprites\s_scoreboard</sprite>
+    <sprite>sprites\s_sync</sprite>
+    <sprite>sprites\s_exit</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\titleBackground</background>
     <background>background\scoreBackground</background>
     <background>background\registerBackground</background>
+    <background>background\pauseBackground</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -66,6 +69,7 @@
     <font>fonts\font2</font>
     <font>fonts\Bebas</font>
     <font>fonts\font_score</font>
+    <font>fonts\font_player_name</font>
   </fonts>
   <objects name="objects">
     <object>objects\o_bullet</object>
@@ -112,6 +116,8 @@
         <object>objects\o_theatre</object>
       </objects>
     </objects>
+    <object>objects\o_scoreBackButton</object>
+    <object>objects\o_scoreSync</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\registerScreen</room>
@@ -126,7 +132,7 @@
     </rooms>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41955.9257273611</constant>
+    <constant name="GM_build_date">41956.9733571644</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
