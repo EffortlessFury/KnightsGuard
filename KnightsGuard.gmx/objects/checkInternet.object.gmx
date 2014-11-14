@@ -29,39 +29,14 @@
 
 if os_is_network_connected()
     {
-        room_goto(scoreBoard);
+        // room_goto(scoreBoard);
+        instance_create(0,0,objScoreButton);
+    }
+else
+    {
+        draw_text(100,100,"Sorry - No Internet detected - Please restart the game.");
     }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>514</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_draw_text</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>2</kind>
-            <string>Sorry - No Internet detected - Please restart the game</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>100</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>100</string>
           </argument>
         </arguments>
       </action>

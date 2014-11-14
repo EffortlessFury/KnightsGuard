@@ -32,9 +32,11 @@ global.firstKillAchieved = false;
 global.grid = mp_grid_create(X_MARGIN, Y_MARGIN, ceil(room_width/CELL_SIZE) - 2*X_MARGIN/CELL_SIZE, ceil(room_height/CELL_SIZE) - 2*Y_MARGIN/CELL_SIZE, CELL_SIZE, CELL_SIZE)
 
 // Spawning variables. // Katie: Grade? Score? Lives? Which ones are we using?
+// Jon: Both grade and score.
 // &lt;from master&gt;
 lives = 30
 score = 0
+global.uscore = score; // this needs to be here in order to reset score for new game
 // &lt;/from master&gt;
 grade = 100
 wave = 0

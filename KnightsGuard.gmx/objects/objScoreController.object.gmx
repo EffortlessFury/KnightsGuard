@@ -35,7 +35,6 @@ gsPlayer_Highest_Score(global.uid); // Retrieve players current highest score fr
 // Initialize variables to 0 for later use.
 global.phighscore = 0;
 global.ghighscore = 0;
-global.uscore = 0; // Current score for this game... initialize to 0 for game start.
 global.lscoreRow = 0; // Will be used later to store the row number of the lowest score.
 </string>
           </argument>

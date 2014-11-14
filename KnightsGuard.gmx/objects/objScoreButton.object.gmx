@@ -25,13 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>keyboard_string = "";
+            <string>// End of Game... Lets pull the lowest score from the database to see if you earned a spot!
+
+gsLowest_Score()
+lscore = 0;
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,15 +52,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black); // Write name in color: white
-draw_set_font(font_player_name);
-draw_text(425,360,keyboard_string); // draw keyboard string
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="10" enumb="13">
+    <event eventtype="7" enumb="62">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -73,18 +74,17 @@ draw_text(425,360,keyboard_string); // draw keyboard string
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.uname = keyboard_string; //Set the username to the keyboard string the player entered
-global.uid = gsCreate_ID(9); // Create a user ID for the player
-global.uscore = 0; // Current score for this game... initialize to 0 for game start.
+            <string>/*gsLowest_Score will return a ds_list called lowscore with 2 entries, 0 
+will be the lowest score, 1 will be the row number of the lowest score. */
 
-//Write this new info to an INI file
-ini_open("yaai.ini")
-ini_write_string("save","name", string(global.uname));
-ini_write_real("save","id",real(global.uid));
-ini_close();
+gsLowest_Score_Result(); //Get result of lows score as a ds_list
+//alarm[0] = 15
 
-room_goto(titleScreen);
+global.lscore = ds_list_find_value(lowscore,0); //assign the value of list item 0, then low score, to a variable
+global.lscoreRow = ds_list_find_value(lowscore,1); // Go ahead and grab the row number just in case
+ds_list_destroy(lowscore); // We are done with this ds_list - free it from memory
 
+room_goto(scoreBoardLoad);
 </string>
           </argument>
         </arguments>

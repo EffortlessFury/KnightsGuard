@@ -18,5 +18,3 @@ if ds_map_find_value(async_load, "id") == lowRow
     ds_list_destroy(brk);
     
     return lowscore;
-    
-    

@@ -88,13 +88,12 @@ ds_list_destroy(lowscore); // We are done with this ds_list - free it from memor
 
 if (global.uscore &gt; lscore)//If players score is higher than the lowest stored score...
     {
-    room_goto(rmHighScore);// We will add the players score to the list!
+    room_goto(scoreBoard);// We will add the players score to the list!
     }
 else
     {
-    room_goto(rmNoHighScore); //Otherwise tell him he sucked
+    room_goto(scoreBoardLoad); // Otherwise just show the list
     }
-
 </string>
           </argument>
         </arguments>
