@@ -8,6 +8,43 @@
   <parentName>o_towerParent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited()
+
+dmg_array[0] = 10;
+dmg_array[1] = 20;
+dmg_array[2] = 40;
+dmg_array[3] = 80;
+dmg_array[4] = 160;
+
+range_array[0] = 150;
+range_array[1] = 300;
+range_array[2] = 450;
+range_array[3] = 600;
+range_array[4] = 900;
+
+fireSpeed = room_speed / 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,15 +62,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (canShoot)
-{
+            <string>event_inherited();
+if (canShoot) {
     canShoot = false // Toggle shooting off until tower reloads.
-    nearestEnemy = instance_nearest(x, y, o_enemy)
-    if (distance_to_object(nearestEnemy) &lt; 300)
-    {
-        bullet = instance_create(x, y - 42, o_bullet)
+    nearestEnemy = instance_nearest(x, y, o_enemy);
+    //Need array for distances across upgrades
+    if (distance_to_object(nearestEnemy) &lt; (range_array[towerLevel] * rangeMultiplier)) {
+        bullet = instance_create(x, y - 42, o_directionalBullet)
+        bullet.speed = 15; //I think this bullet speed should remain constant among all tower upgrades.
+        bullet.atk = dmg_array[towerLevel] * damageMultiplier; //Need array for damage across upgrades
+        time = sqrt(sqr(nearestEnemy.x - bullet.x) + sqr(nearestEnemy.y - bullet.y))/bullet.speed; //work out how long the bullet will take to reach it
+        dst = nearestEnemy.spd*time; //work out how far the enemy will travel in this time
+        xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
+        yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
+        
+        //Need to apply gauss here
+        bullet.direction = point_direction(bullet.x,bullet.y,xx,yy);
     }
-    alarm[0] = room_speed*2 // Let tower shoot every 2 seconds.
+    alarm[0] = fireSpeed * speedMultiplier;
 }
 </string>
           </argument>
@@ -52,5 +98,8 @@
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,48</point>
+    <point>32,32</point>
+  </PhysicsShapePoints>
 </object>
