@@ -72,7 +72,7 @@
     <font>fonts\font_player_name</font>
   </fonts>
   <objects name="objects">
-    <object>objects\o_bullet</object>
+    <object>objects\o_directionalBullet</object>
     <object>objects\o_control</object>
     <object>objects\o_goal</object>
     <object>objects\o_mount</object>
@@ -95,6 +95,12 @@
           <object>objects\o_assignment_quiz</object>
           <object>objects\o_assignment_bigtest</object>
         </objects>
+        <object>objects\o_impedimentParent</object>
+        <objects name="Impediments">
+          <object>objects\o_impediment_speed</object>
+          <object>objects\o_impediment_damage</object>
+          <object>objects\o_impediment_range</object>
+        </objects>
       </objects>
     </objects>
     <objects name="Scoreboards">
@@ -114,10 +120,13 @@
       <object>objects\objScoreController</object>
     </objects>
     <objects name="Towers">
+      <object>objects\o_towerParent</object>
       <objects name="Automated Towers">
-        <object>objects\o_towerParent</object>
         <object>objects\o_theatre</object>
       </objects>
+    </objects>
+    <objects name="Buildings">
+      <object>objects\o_buildingParent</object>
     </objects>
     <object>objects\o_scoreBackButton</object>
     <object>objects\o_scoreSync</object>
