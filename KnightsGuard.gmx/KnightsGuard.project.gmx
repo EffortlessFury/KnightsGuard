@@ -71,6 +71,7 @@
         <script>scripts\gsGet_Rank_Result.gml</script>
       </scripts>
     </scripts>
+    <script>scripts\gauss.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>

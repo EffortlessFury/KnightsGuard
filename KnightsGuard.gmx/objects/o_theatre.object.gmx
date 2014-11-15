@@ -39,6 +39,12 @@ range_array[2] = 450;
 range_array[3] = 600;
 range_array[4] = 900;
 
+deviation_array[0] = 15;
+deviation_array[1] = 12;
+deviation_array[2] = 9;
+deviation_array[3] = 6;
+deviation_array[4] = 3;
+
 fireSpeed = room_speed / 2;
 </string>
           </argument>
@@ -76,8 +82,9 @@ if (canShoot) {
         xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
         yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
         
-        //Need to apply gauss here
-        bullet.direction = point_direction(bullet.x,bullet.y,xx,yy);
+        rand = gauss(0, deviation_array[towerLevel]);
+
+        bullet.direction = point_direction(bullet.x,bullet.y,xx + rand,yy + rand);
     }
     alarm[0] = fireSpeed * speedMultiplier;
 }
