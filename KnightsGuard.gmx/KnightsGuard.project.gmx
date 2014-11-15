@@ -132,6 +132,7 @@
       <object>objects\o_towerParent</object>
       <objects name="Automated Towers">
         <object>objects\o_theatre</object>
+        <object>objects\o_cone</object>
       </objects>
     </objects>
     <objects name="Buildings">
