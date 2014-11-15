@@ -9,8 +9,17 @@
     <sound>sound\InGameMusic</sound>
   </sounds>
   <sprites name="sprites">
+    <sprites name="Projectiles">
+      <sprite>sprites\s_cannonball_explode</sprite>
+      <sprite>sprites\s_cannonball</sprite>
+      <sprite>sprites\s_arrow_red_big</sprite>
+      <sprite>sprites\s_arrow_red</sprite>
+      <sprite>sprites\s_arrow_blue_big</sprite>
+      <sprite>sprites\s_arrow_blue</sprite>
+      <sprite>sprites\s_arrow</sprite>
+      <sprite>sprites\s_bullet</sprite>
+    </sprites>
     <sprite>sprites\s_assignment</sprite>
-    <sprite>sprites\s_bullet</sprite>
     <sprite>sprites\s_exam</sprite>
     <sprite>sprites\s_goal</sprite>
     <sprite>sprites\s_mount</sprite>
