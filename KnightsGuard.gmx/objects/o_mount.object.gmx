@@ -77,10 +77,10 @@ if (towerHere)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!position_meeting(x, y, o_theatre))
+            <string>if (!position_meeting(x, y, o_aoe_tower))
 {
     canMount = false
-    instance_create(x, y, o_theatre)
+    instance_create(x, y, o_aoe_tower)
 }
 else {cantMount = true}
 </string>
