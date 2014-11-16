@@ -67,9 +67,10 @@ if (enemy)
     // Loop through each enemy within radius and hurt them!
     for (i=0; i &lt; list_size; i++)
     {
-        instance= ds_list_find_value(my_list,i);
+        instance = ds_list_find_value(my_list,i);
         fading = true
         instance.hp -= atk // POW!
+        
         with (instance)
         {
             image_blend = c_blue
@@ -109,7 +110,7 @@ if (fading)
     for (i = 1; i &gt; 0; i -= .05)
     {
         draw_set_alpha(i)
-    }
+    }       
     instance_destroy()
     draw_set_alpha(1)
 }
