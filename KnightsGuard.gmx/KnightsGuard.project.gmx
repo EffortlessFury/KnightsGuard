@@ -72,7 +72,7 @@
       </scripts>
     </scripts>
     <script>scripts\gauss.gml</script>
-	<script>scripts\collision_circle_list.gml</script>
+    <script>scripts\collision_circle_list.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -136,7 +136,7 @@
       <objects name="Automated Towers">
         <object>objects\o_theatre</object>
         <object>objects\o_cone</object>
-		<object>objects\o_aoe_tower</object>
+        <object>objects\o_aoe_tower</object>
       </objects>
     </objects>
     <objects name="Buildings">
