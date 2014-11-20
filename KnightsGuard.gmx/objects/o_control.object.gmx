@@ -33,7 +33,6 @@ global.grid = mp_grid_create(X_MARGIN, Y_MARGIN, ceil(room_width/CELL_SIZE) - 2*
 
 // Spawning variables. // Katie: Grade? Score? Lives? Which ones are we using?
 // Jon: Both grade and score.
-lives = 30
 score = 0
 global.uscore = score; // this needs to be here in order to reset score for new game
 grade = 100
@@ -80,7 +79,7 @@ if (wave % 2 != 0) {newEnemy = instance_create(o_assignmentspawn.x, o_assignment
 else {newEnemy = instance_create(o_examspawn.x, o_examspawn.y, o_assignment_bigtest)}
 with (newEnemy)
 {
-    if (mp_grid_path(global.grid, path, x, y, o_goal.x, o_goal.y, true))
+    if (mp_grid_path(global.grid, path, x, y, o_studentunion.x, o_studentunion.y, true))
     {
         showPath = true
         path_start(path, spd, 0, false)
@@ -181,14 +180,9 @@ draw_set_color(c_black)
 draw_rectangle(X_MARGIN, Y_MARGIN + 2, room_width - X_MARGIN, room_height - Y_MARGIN, 1)
 draw_set_color(c_white)
 draw_set_font(font1)
-draw_text(x, y, "Lives: " + string(lives))
-draw_text(x, 25, "Score: " + string(global.uscore));
-/*// Draw the player's grade (proportional to the student union's health) on the screen.
+// Draw the player's grade (proportional to the student union's health) on the screen.
 draw_text(x, y, "Grade: " + string(grade))
-// Draw the player's score.
-draw_text(0, 20, "Score: " + string(score))
-// Draw the player's lives.
-draw_text(0, 40, "Lives: " + string(lives))*/
+draw_text(x, 25, "Score: " + string(global.uscore));
 // Draw tutorial text.
 draw_set_font(font0)
 draw_text(35, 67, "Press Enter for the next wave.#Click to build towers.#Right-click to demolish towers.")

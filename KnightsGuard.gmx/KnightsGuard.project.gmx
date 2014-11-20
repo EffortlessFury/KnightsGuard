@@ -24,7 +24,8 @@
     <sprite>sprites\s_goal</sprite>
     <sprite>sprites\s_mount</sprite>
     <sprite>sprites\s_player</sprite>
-    <sprite>sprites\s_spawn</sprite>
+    <sprite>sprites\s_spawn1</sprite>
+    <sprite>sprites\s_spawn2</sprite>
     <sprite>sprites\s_studentunion</sprite>
     <sprite>sprites\s_tower</sprite>
     <sprite>sprites\s_loading</sprite>
@@ -38,6 +39,7 @@
     <background>background\scoreBackground</background>
     <background>background\registerBackground</background>
     <background>background\pauseBackground</background>
+    <background>background\bg_map</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -90,9 +92,9 @@
     <object>objects\o_mount</object>
     <object>objects\o_player</object>
     <object>objects\o_assignmentspawn</object>
+    <object>objects\o_examspawn</object>
     <object>objects\o_bkgrd_music_title</object>
     <object>objects\o_ingame_music</object>
-    <object>objects\o_examspawn</object>
     <object>objects\o_studentunion</object>
     <object>objects\o_pause</object>
     <object>objects\o_startButton</object>

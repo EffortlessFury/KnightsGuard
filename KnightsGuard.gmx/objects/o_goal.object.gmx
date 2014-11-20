@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>with (other) {instance_destroy()}
-lives--
 if (score &gt;= 200)
     score -= 200
 else
