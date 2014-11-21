@@ -34,9 +34,14 @@ image_xscale = -1
 scoreModifier = o_control.wave + 9
 global.uscore += scoreModifier;
 
-//Debug
+// Path.
 path = path_add()
 showPath = true
+/*if (mp_grid_path(global.grid, path, x, y, o_studentunion.x, o_studentunion.y, true))
+{
+    showPath = true
+    path_start(path, spd, 0, false)
+}*/
 </string>
           </argument>
         </arguments>

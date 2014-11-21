@@ -34,8 +34,11 @@ global.grid = mp_grid_create(X_MARGIN, Y_MARGIN, ceil(room_width/CELL_SIZE) - 2*
 // Spawning variables. // Katie: Grade? Score? Lives? Which ones are we using?
 // Jon: Both grade and score.
 score = 0
-global.uscore = score; // this needs to be here in order to reset score for new game
+global.uscore = score; // This needs to be here in order to reset score for new game.
 grade = 100
+money = 0 //not used yet
+r0und = 1
+roundChanged = false
 wave = 0
 global.enemiesInQueue = 0
 spawnTime = 60 // 60 steps between spawning each unit.
@@ -75,9 +78,14 @@ for (i = 0; i &lt; 6; i++)
           <argument>
             <kind>1</kind>
             <string>/// Spawn enemies.
-if (wave % 2 != 0) {newEnemy = instance_create(o_assignmentspawn.x, o_assignmentspawn.y, o_assignment_homework)}
-else {newEnemy = instance_create(o_examspawn.x, o_examspawn.y, o_assignment_bigtest)}
-with (newEnemy)
+switch (wave mod 4)
+{
+    case 1: with (o_assignmentspawn1) {global.newEnemy = instance_create(x, y, o_assignment_homework); break}
+    case 2: with (o_examspawn1) {global.newEnemy = instance_create(x, y, o_assignment_bigtest); break}
+    case 3: with (o_assignmentspawn2) {global.newEnemy = instance_create(x, y, o_assignment_homework); break}
+    case 0: with (o_examspawn2) {global.newEnemy = instance_create(x, y, o_assignment_bigtest); break}
+}
+with (global.newEnemy)
 {
     if (mp_grid_path(global.grid, path, x, y, o_studentunion.x, o_studentunion.y, true))
     {
@@ -181,19 +189,30 @@ draw_rectangle(X_MARGIN, Y_MARGIN + 2, room_width - X_MARGIN, room_height - Y_MA
 draw_set_color(c_white)
 draw_set_font(font1)
 // Draw the player's grade (proportional to the student union's health) on the screen.
-draw_text(x, y, "Grade: " + string(grade))
-draw_text(x, 25, "Score: " + string(global.uscore));
+draw_text(0, 0, "Grade: " + string(grade))
+draw_text(0, 22, "Score: " + string(global.uscore));
+draw_text(0, 44, "Incoming enemies: " + string(global.enemiesInQueue));
 // Draw tutorial text.
 draw_set_font(font0)
-draw_text(35, 67, "Press Enter for the next wave.#Click to build towers.#Right-click to demolish towers.")
+draw_text(35, 67, "Press Enter for the next wave. Press P to pause.#Click to build towers. Right-click to demolish towers.")
 
 // Display "Wave #" if the wave just changed, aka if waveText is true.
+draw_set_font(font2)
+draw_set_color(c_white)
 if (waveText)
 {
-    draw_set_font(font2)
-    draw_set_color(c_white)
-    draw_text(room_width/2 - 50, room_height/2 - 40, "Wave " + string(wave))
+    if (roundChanged)
+    {
+        draw_text(room_width/2 - 55, room_height/2 - 60, "Round " + string(r0und))
+        draw_text(room_width/2 - 50, room_height/2 - 20, "Wave " + string(wave))
+    }
+    else
+    {
+        draw_text(room_width/2 - 50, room_height/2 - 40, "Wave " + string(wave))
+    }
 }
+draw_text(0, room_height - 60, "Round " + string(r0und))
+draw_text(room_width/2 - 50, room_height - 60, "Wave " + string(wave))
 </string>
           </argument>
         </arguments>
@@ -364,6 +383,11 @@ instance_create(0,0,o_pause);
             <string>if (global.enemiesInQueue == 0)
 {
     wave++
+    if (wave % 5 == 0)
+    {
+        r0und++
+        roundChanged = true
+    }
     waveText = true
     alarm[0] = 60
     global.enemiesInQueue += wave*5

@@ -79,11 +79,19 @@ if (canShoot) {
         bullet.atk = dmg_array[towerLevel] * damageMultiplier; //Need array for damage across upgrades
         time = sqrt(sqr(nearestEnemy.x - bullet.x) + sqr(nearestEnemy.y - bullet.y))/bullet.speed; //work out how long the bullet will take to reach it
         dst = nearestEnemy.spd*time; //work out how far the enemy will travel in this time
-        xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
-        yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
         
-        rand = gauss(0, deviation_array[towerLevel]);
-
+        if (nearestEnemy.hspeed != 0 &amp;&amp; nearestEnemy.vspeed != 0)
+        {
+            xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
+            yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
+            rand = gauss(0, deviation_array[towerLevel]);
+        }
+        else
+        {
+            xx = nearestEnemy.x
+            yy = nearestEnemy.y
+            rand = 0;
+        }
         bullet.direction = point_direction(bullet.x,bullet.y,xx + rand,yy + rand);
     }
     alarm[0] = fireSpeed * speedMultiplier;

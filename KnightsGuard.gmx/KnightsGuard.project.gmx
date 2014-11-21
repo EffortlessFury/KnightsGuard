@@ -33,6 +33,15 @@
     <sprite>sprites\s_scoreboard</sprite>
     <sprite>sprites\s_sync</sprite>
     <sprite>sprites\s_exit</sprite>
+    <sprite>sprites\s_assignmentfront</sprite>
+    <sprite>sprites\s_assignmentback</sprite>
+    <sprite>sprites\s_assignmenthurt</sprite>
+    <sprite>sprites\s_illnessfront</sprite>
+    <sprite>sprites\s_illnessback</sprite>
+    <sprite>sprites\s_illnesshurt</sprite>
+    <sprite>sprites\s_financialfront</sprite>
+    <sprite>sprites\s_financialback</sprite>
+    <sprite>sprites\s_financialhurt</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\titleBackground</background>
@@ -41,7 +50,9 @@
     <background>background\pauseBackground</background>
     <background>background\bg_map</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\path0</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="onlineScoreboard">
       <scripts name="Functions">
@@ -91,8 +102,10 @@
     <object>objects\o_goal</object>
     <object>objects\o_mount</object>
     <object>objects\o_player</object>
-    <object>objects\o_assignmentspawn</object>
-    <object>objects\o_examspawn</object>
+    <object>objects\o_assignmentspawn1</object>
+    <object>objects\o_assignmentspawn2</object>
+    <object>objects\o_examspawn1</object>
+    <object>objects\o_examspawn2</object>
     <object>objects\o_bkgrd_music_title</object>
     <object>objects\o_ingame_music</object>
     <object>objects\o_studentunion</object>
