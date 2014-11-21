@@ -1,5 +1,7 @@
 /*This will give you the result of the gsLowest_Score function call,
 if it worked the result will be the lowest score in the database*/
+lowscore_data = "0,1";
+
 if ds_map_find_value(async_load, "id") == lowRow
     {
     lowscore_data = ds_map_find_value(async_load,"result");

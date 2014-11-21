@@ -1,5 +1,6 @@
 /* This will return the total number of rows stored in the database*/
 
+global.rowcount = 10;
 if ds_map_find_value(async_load, "id") == rowcount
     {
     global.rowcount = ds_map_find_value(async_load,"result");
