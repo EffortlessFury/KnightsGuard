@@ -49,6 +49,7 @@
     <background>background\scoreBackground</background>
     <background>background\registerBackground</background>
     <background>background\pauseBackground</background>
+    <background>background\bg_lost</background>
     <background>background\bg_map</background>
   </backgrounds>
   <paths name="paths">
@@ -152,6 +153,7 @@
     </objects>
     <object>objects\o_bkgrd_music_title</object>
     <object>objects\o_ingame_music</object>
+    <object>objects\o_lost</object>
     <object>objects\o_pause</object>
     <object>objects\o_scoreBackButton</object>
     <object>objects\o_scoreButton</object>
@@ -167,13 +169,14 @@
     <room>rooms\scoreBoard</room>
     <room>rooms\scoreBoardLoad</room>
     <room>rooms\userCheck</room>
+    <room>rooms\losingScreen</room>
     <rooms name="Experimental">
       <room>rooms\rmHighScore</room>
       <room>rooms\rmNoHighScore</room>
     </rooms>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41968.1510243981</constant>
+    <constant name="GM_build_date">41968.2073157523</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>

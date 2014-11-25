@@ -69,11 +69,10 @@ towerAcc[2] = "90%"
 // Health stuff.
 maxHealth = 100
 health = maxHealth
-grade = 100
 healthX1 = 0
 healthY1 = 0
 healthXDisplacement = 350
-healthY2 = healthY1 + 22
+healthY2 = healthY1 + 30
 </string>
           </argument>
         </arguments>
@@ -182,6 +181,7 @@ if (global.enemiesInQueue &gt; 0) {alarm[1] = spawnTime} // Continue spawning if
             <string>if (global.enemiesInQueue &lt; 0) {global.enemiesInQueue = 0}
 
 // Calculate round elapsed time in seconds.
+if (wave == 0) {roundStartTime = current_time} // Keep elapsed time counter from starting before ready.
 roundElapsedSeconds = (current_time - roundStartTime) div 1000
 
 if (mouse_check_button_pressed(mb_left))
@@ -238,8 +238,8 @@ draw_set_alpha(1)
 // Draw the player's grade (proportional to the student union's health), money, and enemies left on the screen.
 draw_set_color(c_white)
 draw_set_font(font1)
-draw_text(room_width - 128, 70, "Money: " + string(money))
-draw_text(0, 32, "Incoming: " + string(global.enemiesInQueue))
+draw_text(room_width - 115, 70, "Money: " + string(money))
+draw_text(0, 40, "Incoming: " + string(global.enemiesInQueue))
 
 // Tower GUI strip.
 draw_set_color(c_white)
@@ -261,24 +261,23 @@ else if (chosenTower == 2) {draw_circle(towerStripX + 2*towerStripXOffset + 64, 
 draw_set_color(c_white)
 draw_set_font(font0)
 draw_text(room_width/2 - 75, 42, "Elapsed time: " + string(roundElapsedSeconds div 60) + ":" + string(roundElapsedSeconds mod 60) + ":" + string((current_time - roundStartTime) div 10 mod 100))
-draw_text(5, 67, "Protect the student union!#Press Enter for the next wave. Press P to pause.#Click on a tower in the upper right to choose it.#Click on the buildings on the map to build towers.#Right-click to demolish towers and regain some money.")
+draw_text(5, 67, "Protect the student union!#Press Enter for the next wave. Press P to pause.#Click on a tower in the upper right to choose it.#Click on the buildings on the map to build towers.#Click on a built tower to upgrade or downgrade it.#Right-click to demolish towers and regain some money.")
 
 // Draw score.
 draw_set_color(c_white)
 draw_set_font(font2)
-draw_text(room_width/2 - 80, 5, "Score: " + string(global.uscore))
+draw_text(room_width/2 - 80, 3, "Score: " + string(global.uscore))
 
 // Make sure healthbar doesn't try to go backward from being negative.
 if (health &lt; 0) {health = 0}
-grade = health/maxHealth * 100
 // Bar.
 draw_set_color(c_green)
 draw_rectangle(healthX1, healthY1, healthX1 + (health/maxHealth)*healthXDisplacement, healthY2, 0) // Green.
 draw_set_color(c_white)
 draw_rectangle(healthX1, healthY1, healthX1 + healthXDisplacement, healthY2, 1) // Black.
 // Draw the player's grade (proportional to the student union's health).
-draw_set_font(font1)
-draw_text(0, 0, "Grade: " + string(grade))
+draw_set_font(font2)
+draw_text(0, 0, "Grade: " + string(health))
 
 // Display "Wave #" or "Round #" if the wave/round just changed, aka if waveChanged or roundChanged is true.
 draw_set_color(c_white)
@@ -287,62 +286,21 @@ if (waveChanged)
 {
     if (roundChanged)
     {
-        draw_text(room_width/2 - 55, room_height/2 - 60, "Round " + string(r0und))
-        draw_text(room_width/2 - 50, room_height/2 - 20, "Wave " + string(wave))
+        draw_text(room_width/2 - 55, room_height - 140, "Round " + string(r0und))
+        draw_text(room_width/2 - 50, room_height - 100, "Wave " + string(wave))
     }
     else
     {
-        draw_text(room_width/2 - 50, room_height/2 - 40, "Wave " + string(wave))
+        draw_text(room_width/2 - 50, room_height - 100, "Wave " + string(wave))
     }
 }
 draw_text(room_width/2 - 100, room_height - 55, "Round " + string(r0und) + ", wave " + string(wave))
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="83">
-      <action>
-        <libid>1</libid>
-        <id>224</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_another_room</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>11</kind>
-            <room>scoreBoard</room>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Check if high score was achieved
-// Ends game and creates the object to compare your score against database records
-// to see if you are eligible to post a high score or not.
 
-instance_create(200,200,objScoreCompare);
+// Player lost.
+if (health &lt;= 0)
+{
+    room_goto(losingScreen)
+}
 </string>
           </argument>
         </arguments>
@@ -425,7 +383,6 @@ instance_create(0,0,o_pause);
             <kind>1</kind>
             <string>if (global.enemiesInQueue == 0)
 {
-    if (wave == 0) {roundStartTime = current_time} // Get elapsed time counter started.
     wave++
     waveChanged = true
     alarm[0] = 60 // Show waveChanged text for one second.

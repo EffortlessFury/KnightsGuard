@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-image_blend = make_color_hsv(20, 145, 255)
+image_blend = make_color_hsv(100, 150, 100)
 
 dmg_array[0] = 12;
 dmg_array[1] = 22;
@@ -65,7 +65,7 @@ checkMovement = false // Used to toggle the code checking whether the enemy is m
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (checkMovement == true)
+            <string>/*if (checkMovement == true)
 {
     checkMovement = false
     if (nearestEnemy)
@@ -86,7 +86,7 @@ checkMovement = false // Used to toggle the code checking whether the enemy is m
         }
         bullet.direction = point_direction(bullet.x,bullet.y,xx + rand,yy + rand);
     }
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -121,11 +121,19 @@ if (canShoot) {
         time = sqrt(sqr(nearestEnemy.x - bullet.x) + sqr(nearestEnemy.y - bullet.y))/bullet.speed; //work out how long the bullet will take to reach it
         dst = nearestEnemy.spd*time; //work out how far the enemy will travel in this time
         
-        // Check whether enemy is moving or not; pass the reins here to End Step event so checking by xprevious and yprevious can work.
-        checkMovement = true
+        xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
+        yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
+        rand = gauss(0, deviation_array[towerLevel]);
+        bullet.direction = point_direction(bullet.x,bullet.y,xx + rand,yy + rand);
+        /*// Check whether enemy is moving or not; pass the reins here to End Step event so checking by xprevious and yprevious can work.
+        checkMovement = true*/
     }
     alarm[0] = fireSpeed * speedMultiplier;
 }
+
+if (towerLevel == 0) {image_blend = make_color_hsv(100, 250, 100)}
+else if (towerLevel == 1) {image_blend = make_color_hsv(100, 200, 100)}
+else if (towerLevel == 2) {image_blend = make_color_hsv(100, 150, 100)}
 </string>
           </argument>
         </arguments>

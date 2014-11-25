@@ -70,7 +70,7 @@ if (enemy)
         instance.hp -= atk // POW!
         with (instance)
         {
-            image_blend = c_blue
+            image_blend = c_red
             alarm[0] = 15
         }
         instance_create(x, y, o_aoeexplosion)

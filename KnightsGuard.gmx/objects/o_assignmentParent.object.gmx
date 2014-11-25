@@ -39,14 +39,14 @@ spd_array[ASSIGNMENT_TYPE.homework] = 3.5;
 spd_array[ASSIGNMENT_TYPE.quiz] = 3;
 spd_array[ASSIGNMENT_TYPE.test] = 2.5;
 spd_array[ASSIGNMENT_TYPE.bigtest] = 1;
-hp_array[ASSIGNMENT_TYPE.homework] = 5;
-hp_array[ASSIGNMENT_TYPE.quiz] = 10;
-hp_array[ASSIGNMENT_TYPE.test] = 15;
+hp_array[ASSIGNMENT_TYPE.homework] = 10;
+hp_array[ASSIGNMENT_TYPE.quiz] = 15;
+hp_array[ASSIGNMENT_TYPE.test] = 20;
 hp_array[ASSIGNMENT_TYPE.bigtest] = 30;
-dmg_array[ASSIGNMENT_TYPE.homework] = 1;
-dmg_array[ASSIGNMENT_TYPE.quiz] = 2;
-dmg_array[ASSIGNMENT_TYPE.test] = 3;
-dmg_array[ASSIGNMENT_TYPE.bigtest] = 4;
+dmg_array[ASSIGNMENT_TYPE.homework] = 2;
+dmg_array[ASSIGNMENT_TYPE.quiz] = 4;
+dmg_array[ASSIGNMENT_TYPE.test] = 6;
+dmg_array[ASSIGNMENT_TYPE.bigtest] = 8;
 </string>
           </argument>
         </arguments>

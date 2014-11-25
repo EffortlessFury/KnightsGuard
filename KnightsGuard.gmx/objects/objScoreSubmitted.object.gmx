@@ -32,7 +32,7 @@ gsGet_List(10);
 //We are going to create a 3 stage check to make sure the list is loaded before we try to use it.
 
 list_loaded = 0; //This will be a trigger for the step event to see if the list is loaded or not
-alarm[0] = 15;  //Set alarm 0 to give some time for the list to be created.
+alarm[0] = 45;  //Set alarm 0 to give some time for the list to be created.
 </string>
           </argument>
         </arguments>

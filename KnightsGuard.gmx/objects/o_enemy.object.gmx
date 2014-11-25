@@ -82,7 +82,11 @@ showPath = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Death.
+            <string>// Flip to face the correct direction.
+if (x &lt; room_width/2) {image_xscale = 1}
+else {image_xscale = -1}
+
+// Death.
 if (hp &lt;= 0)
 {
     if(global.firstKillAchieved = false) {
@@ -94,7 +98,7 @@ if (hp &lt;= 0)
     path_delete(path)
     instance_destroy()
     score += scoreModifier
-    o_control.money += round(scoreModifier*.7) // Add 70% of the new score points to money.
+    o_control.money += 15
 }
 </string>
           </argument>
@@ -119,6 +123,7 @@ if (hp &lt;= 0)
           <argument>
             <kind>1</kind>
             <string>health -= dmg
+with (other) {image_blend = c_red; alarm[0] = 15}
 instance_destroy()
 </string>
           </argument>
