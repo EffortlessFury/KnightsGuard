@@ -74,6 +74,10 @@ draw_text(425,360,keyboard_string); // draw keyboard string
           <argument>
             <kind>1</kind>
             <string>global.uname = keyboard_string; //Set the username to the keyboard string the player entered
+if string_length(global.uname) &gt; 10
+   {
+   global.uname = string_copy(global.uname, 1, 10);
+   }
 global.uid = gsCreate_ID(9); // Create a user ID for the player
 global.uscore = 0; // Current score for this game... initialize to 0 for game start.
 
