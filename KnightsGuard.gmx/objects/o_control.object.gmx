@@ -54,7 +54,10 @@ towerStripXOffset = 97
 towerStripYOffset = 65
 chosenTower = 0 // The tower the player currently has selected to build next.
 
-// Set up listed tower cost, damage, and accuracy.
+// Set up listed tower name, cost, damage, and accuracy.
+towerName[0] = "Normal"
+towerName[1] = "AOE"
+towerName[2] = "Sniper"
 for (i = 0; i &lt; 3; i++)
 {
     towerCost[i] = 100*(i+1)
@@ -103,20 +106,20 @@ if (global.enemiesInQueue &gt; 0)
     {
         case 0: with (o_assignmentspawn1)
                 {
-                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz))
+                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
                 }
                 break;
-        case 1: with (o_examspawn)
+        case 1: with (o_impedimentspawn1)
                 {
-                    instance_create(x, y, choose(o_assignment_test, o_assignment_bigtest))
+                    instance_create(x, y, choose(o_impediment_damage, o_impediment_range, o_impediment_speed))
                 }
                 break;
         case 2: with (o_assignmentspawn2)
                 {
-                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz))
+                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
                 }
                 break;
-        case 3: with (o_impedimentspawn)
+        case 3: with (o_impedimentspawn2)
                 {
                     instance_create(x, y, choose(o_financial, o_impediment_damage, o_impediment_range, o_impediment_speed))
                 }
@@ -156,6 +159,7 @@ if (global.enemiesInQueue &gt; 0) {alarm[1] = spawnTime} // Continue spawning if
           <argument>
             <kind>1</kind>
             <string>waveChanged = false
+roundChanged = false
 </string>
           </argument>
         </arguments>
@@ -248,14 +252,15 @@ for (i = 0; i &lt; 3; i++)
     draw_rectangle(towerStripX + i*towerStripXOffset, towerStripY, towerStripX + (i+1)*towerStripXOffset, towerStripY + towerStripYOffset, 1)
     draw_sprite(s_tower, 0, towerStripX + 17 + i*towerStripXOffset, towerStripY + 49)
     draw_set_font(font0)
-    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4, "Cost: " + string(towerCost[i]))
-    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 13, "Dmg: " + string(towerDmg[i]))
-    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 26, "Acc: " + string(towerAcc[i]))
+    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4, string(towerName[i]))
+    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 13, "Cost: " + string(towerCost[i]))
+    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 26, "Dmg: " + string(towerDmg[i]))
+    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 39, "Acc: " + string(towerAcc[i]))
 }
 draw_set_color(c_red)
-if (chosenTower == 0) {draw_circle(towerStripX + 0*towerStripXOffset + 64, towerStripY + 53, 3, false)}
-else if (chosenTower == 1) {draw_circle(towerStripX + 1*towerStripXOffset + 64, towerStripY + 53, 3, false)}
-else if (chosenTower == 2) {draw_circle(towerStripX + 2*towerStripXOffset + 64, towerStripY + 53, 3, false)}
+if (chosenTower == 0) {draw_circle(towerStripX + 0*towerStripXOffset + 64, towerStripY + 62, 3, false)}
+else if (chosenTower == 1) {draw_circle(towerStripX + 1*towerStripXOffset + 64, towerStripY + 62, 3, false)}
+else if (chosenTower == 2) {draw_circle(towerStripX + 2*towerStripXOffset + 64, towerStripY + 62, 3, false)}
 
 // Draw elapsed time and tutorial text.
 draw_set_color(c_white)
@@ -300,6 +305,36 @@ draw_text(room_width/2 - 100, room_height - 55, "Round " + string(r0und) + ", wa
 if (health &lt;= 0)
 {
     room_goto(losingScreen)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="83">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (instance_exists(o_aoe) &amp;&amp; money &gt;= 50)
+{
+    aoeTower = instance_nearest(mouse_x, mouse_y, o_aoe)
+    with (aoeTower)
+    {
+        sPressed = true
+    }
 }
 </string>
           </argument>
@@ -383,6 +418,7 @@ instance_create(0,0,o_pause);
             <kind>1</kind>
             <string>if (global.enemiesInQueue == 0)
 {
+    if (wave == 0) {audio_play_sound(snd_horn, 0, false)}
     wave++
     waveChanged = true
     alarm[0] = 60 // Show waveChanged text for one second.
@@ -391,6 +427,8 @@ instance_create(0,0,o_pause);
         if (r0und != 0) {roundStartTime = current_time}
         r0und++
         roundChanged = true
+        wave = 1
+        audio_play_sound(snd_horn, 0, false)
     }
     global.enemiesInQueue += wave*4
     alarm[1] = spawnTime // Spawn new enemy until enemiesInQueue is zero.

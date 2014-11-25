@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enum TOWER_TYPE {
+            <string>audio_play_sound(snd_tower, 0, false)
+
+enum TOWER_TYPE {
     theatre,
     cone,
     aoe
@@ -129,18 +131,21 @@ if (upgradeTower == true)
     {
         if (towerLevel == 1) {o_control.money += 70}
         else if (towerLevel == 2) {o_control.money += 160}
+        else {exit}
         towerLevel = 0
     }
     else if (towerUpgrade == 1)
     {
-        if (towerLevel == 0) {o_control.money -= 90}
+        if (towerLevel == 0 &amp;&amp; o_control.money &gt;= 90) {o_control.money -= 90}
         else if (towerLevel == 2) {o_control.money += 70}
+        else {exit}
         towerLevel = 1
     }
     else if (towerUpgrade == 2)
     {
-        if (towerLevel == 0) {o_control.money -= 180}
-        else if (towerLevel == 1) {o_control.money -= 90}
+        if (towerLevel == 0 &amp;&amp; o_control.money &gt;= 180) {o_control.money -= 180}
+        else if (towerLevel == 1 &amp;&amp; o_control.money &gt;= 90) {o_control.money -= 90}
+        else {exit}
         towerLevel = 2
     }
 }

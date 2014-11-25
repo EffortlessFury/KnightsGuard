@@ -5,8 +5,11 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\titleScreenMusic</sound>
-    <sound>sound\InGameMusic</sound>
+    <sound>sound\snd_arrow</sound>
+    <sound>sound\snd_cannonball</sound>
+    <sound>sound\snd_catapult</sound>
+    <sound>sound\snd_horn</sound>
+    <sound>sound\snd_tower</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Projectiles">
@@ -105,8 +108,8 @@
     <object>objects\o_aoeexplosion</object>
     <object>objects\o_assignmentspawn1</object>
     <object>objects\o_assignmentspawn2</object>
-    <object>objects\o_examspawn</object>
-    <object>objects\o_impedimentspawn</object>
+    <object>objects\o_impedimentspawn1</object>
+    <object>objects\o_impedimentspawn2</object>
     <object>objects\o_mount</object>
     <object>objects\o_studentunion</object>
     <objects name="Enemies">
@@ -176,7 +179,7 @@
     </rooms>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41968.2391586343</constant>
+    <constant name="GM_build_date">41968.9883278819</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>

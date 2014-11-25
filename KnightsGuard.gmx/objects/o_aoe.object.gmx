@@ -43,6 +43,7 @@ deviation_array[2] = 2;
 fireSpeed = room_speed / 2;
 
 checkMovement = false // Used to toggle the code checking whether the enemy is moving.
+sPressed = false
 </string>
           </argument>
         </arguments>
@@ -115,9 +116,22 @@ if (canShoot) {
     canShoot = false // Toggle shooting off until tower reloads.
     //Need array for distances across upgrades
     if (distance_to_object(nearestEnemy) &lt; (range_array[towerLevel] * rangeMultiplier)) {
-        bullet = instance_create(x, y - 42, o_aoebullet)
-        bullet.speed = 6; //I think this bullet speed should remain constant among all tower upgrades.
-        bullet.atk = dmg_array[towerLevel] * damageMultiplier; //Need array for damage across upgrades
+        if (sPressed == true)
+        {
+            bullet = instance_create(x, y - 42, o_aoebullet)
+            bullet.speed = 8; //I think this bullet speed should remain constant among all tower upgrades.
+            bullet.atk = dmg_array[towerLevel] * 3.2; //Need array for damage across upgrades
+            with (bullet) {image_blend = c_black}
+            sPressed = false
+            audio_play_sound(snd_catapult, 0, false)
+            o_control.money -= 50
+        }
+        else
+        {
+            bullet = instance_create(x, y - 42, o_aoebullet)
+            bullet.speed = 6; //I think this bullet speed should remain constant among all tower upgrades.
+            bullet.atk = dmg_array[towerLevel] * damageMultiplier; //Need array for damage across upgrades
+        }
         time = sqrt(sqr(nearestEnemy.x - bullet.x) + sqr(nearestEnemy.y - bullet.y))/bullet.speed; //work out how long the bullet will take to reach it
         dst = nearestEnemy.spd*time; //work out how far the enemy will travel in this time
         
