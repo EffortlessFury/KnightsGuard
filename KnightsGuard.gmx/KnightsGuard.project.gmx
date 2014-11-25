@@ -10,29 +10,29 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="Projectiles">
-      <sprite>sprites\s_cannonball_explode</sprite>
+      <sprite>sprites\s_cannonballexplode</sprite>
       <sprite>sprites\s_cannonball</sprite>
-      <sprite>sprites\s_arrow_red_big</sprite>
-      <sprite>sprites\s_arrow_red</sprite>
-      <sprite>sprites\s_arrow_blue_big</sprite>
-      <sprite>sprites\s_arrow_blue</sprite>
+      <sprite>sprites\s_arrowredbig</sprite>
+      <sprite>sprites\s_arrowred</sprite>
+      <sprite>sprites\s_arrowbluebig</sprite>
+      <sprite>sprites\s_arrowblue</sprite>
       <sprite>sprites\s_arrow</sprite>
       <sprite>sprites\s_bullet</sprite>
     </sprites>
     <sprite>sprites\s_assignment</sprite>
     <sprite>sprites\s_exam</sprite>
-    <sprite>sprites\s_goal</sprite>
     <sprite>sprites\s_mount</sprite>
-    <sprite>sprites\s_player</sprite>
+    <sprite>sprites\s_mounted</sprite>
     <sprite>sprites\s_spawn1</sprite>
     <sprite>sprites\s_spawn2</sprite>
+    <sprite>sprites\s_spawn3</sprite>
     <sprite>sprites\s_studentunion</sprite>
     <sprite>sprites\s_tower</sprite>
     <sprite>sprites\s_loading</sprite>
-    <sprite>sprites\s_start</sprite>
-    <sprite>sprites\s_scoreboard</sprite>
-    <sprite>sprites\s_sync</sprite>
     <sprite>sprites\s_exit</sprite>
+    <sprite>sprites\s_scoreboard</sprite>
+    <sprite>sprites\s_start</sprite>
+    <sprite>sprites\s_sync</sprite>
     <sprite>sprites\s_assignmentfront</sprite>
     <sprite>sprites\s_assignmentback</sprite>
     <sprite>sprites\s_assignmenthurt</sprite>
@@ -42,7 +42,6 @@
     <sprite>sprites\s_financialfront</sprite>
     <sprite>sprites\s_financialback</sprite>
     <sprite>sprites\s_financialhurt</sprite>
-    <sprite>sprites\s_enter</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\titleBackground</background>
@@ -97,39 +96,37 @@
     <font>fonts\font_player_name</font>
   </fonts>
   <objects name="objects">
-    <object>objects\o_directionalBullet</object>
-    <object>objects\o_aoe_bullet</object>
     <object>objects\o_control</object>
-    <object>objects\o_goal</object>
-    <object>objects\o_mount</object>
-    <object>objects\o_player</object>
+    <object>objects\o_directionalbullet</object>
+    <object>objects\o_sniperbullet</object>
+    <object>objects\o_aoebullet</object>
+    <object>objects\o_aoeexplosion</object>
     <object>objects\o_assignmentspawn1</object>
     <object>objects\o_assignmentspawn2</object>
-    <object>objects\o_examspawn1</object>
-    <object>objects\o_examspawn2</object>
-    <object>objects\o_bkgrd_music_title</object>
-    <object>objects\o_ingame_music</object>
+    <object>objects\o_examspawn</object>
+    <object>objects\o_impedimentspawn</object>
+    <object>objects\o_mount</object>
     <object>objects\o_studentunion</object>
-    <object>objects\o_pause</object>
-    <object>objects\o_startButton</object>
-    <object>objects\o_scoreButton</object>
     <objects name="Enemies">
-      <object>objects\o_enemy</object>
-      <objects name="Land Locked Enemies">
-        <object>objects\o_assignmentParent</object>
-        <objects name="Assignments">
-          <object>objects\o_assignment_homework</object>
-          <object>objects\o_object_test</object>
-          <object>objects\o_assignment_quiz</object>
-          <object>objects\o_assignment_bigtest</object>
-        </objects>
-        <object>objects\o_impedimentParent</object>
-        <objects name="Impediments">
-          <object>objects\o_impediment_speed</object>
-          <object>objects\o_impediment_damage</object>
-          <object>objects\o_impediment_range</object>
-        </objects>
+      <objects name="Assignments">
+        <object>objects\o_assignment_homework</object>
+        <object>objects\o_assignment_quiz</object>
+        <object>objects\o_assignment_test</object>
+        <object>objects\o_assignment_bigtest</object>
       </objects>
+      <objects name="Impediments">
+        <object>objects\o_impediment_damage</object>
+        <object>objects\o_impediment_range</object>
+        <object>objects\o_impediment_speed</object>
+      </objects>
+      <object>objects\o_financial</object>
+    </objects>
+    <objects name="Parents">
+      <object>objects\o_assignmentParent</object>
+      <object>objects\o_buildingParent</object>
+      <object>objects\o_enemy</object>
+      <object>objects\o_impedimentParent</object>
+      <object>objects\o_tower</object>
     </objects>
     <objects name="Scoreboards">
       <object>objects\checkInternet</object>
@@ -148,19 +145,17 @@
       <object>objects\objScoreController</object>
     </objects>
     <objects name="Towers">
-      <object>objects\o_towerParent</object>
-      <objects name="Automated Towers">
-        <object>objects\o_theatre</object>
-        <object>objects\o_cone</object>
-        <object>objects\o_aoe_tower</object>
-      </objects>
+      <object>objects\o_theatre</object>
+      <object>objects\o_aoe</object>
+      <object>objects\o_sniper</object>
     </objects>
-    <objects name="Buildings">
-      <object>objects\o_buildingParent</object>
-    </objects>
+    <object>objects\o_bkgrd_music_title</object>
+    <object>objects\o_ingame_music</object>
+    <object>objects\o_pause</object>
     <object>objects\o_scoreBackButton</object>
+    <object>objects\o_scoreButton</object>
     <object>objects\o_scoreSync</object>
-    <object>objects\o_enterButton</object>
+    <object>objects\o_startButton</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\registerScreen</room>
@@ -176,7 +171,7 @@
     </rooms>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41967.2282645023</constant>
+    <constant name="GM_build_date">41968.1353079051</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>

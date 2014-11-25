@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>o_towerParent</parentName>
+  <parentName>o_tower</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -30,22 +30,62 @@
 dmg_array[0] = 10;
 dmg_array[1] = 20;
 dmg_array[2] = 40;
-dmg_array[3] = 80;
-dmg_array[4] = 160;
 
-range_array[0] = 150;
-range_array[1] = 300;
-range_array[2] = 450;
-range_array[3] = 600;
-range_array[4] = 900;
+range_array[0] = 200;
+range_array[1] = 350;
+range_array[2] = 500;
 
-deviation_array[0] = 15;
-deviation_array[1] = 12;
-deviation_array[2] = 9;
-deviation_array[3] = 6;
-deviation_array[4] = 3;
+deviation_array[0] = 12;
+deviation_array[1] = 9;
+deviation_array[2] = 6;
 
 fireSpeed = room_speed / 2;
+
+checkMovement = false // Used to toggle the code checking whether the enemy is moving.
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (checkMovement == true)
+{
+    checkMovement = false
+    if (nearestEnemy)
+    {
+        // If enemy is moving, apply gaussian randomness (xprevious and yprevious equal x and y, respectively, if in the regular Step event, so the movement check using those variables is needed here).
+        if (nearestEnemy.x != nearestEnemy.xprevious || nearestEnemy.y != nearestEnemy.yprevious)
+        {
+            xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
+            yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
+            rand = gauss(0, deviation_array[towerLevel]);
+        }
+        // If enemy is not moving, do not apply gaussian randomness.
+        else
+        {
+            xx = nearestEnemy.x
+            yy = nearestEnemy.y
+            rand = 0;
+        }
+        bullet.direction = point_direction(bullet.x,bullet.y,xx + rand,yy + rand);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -69,30 +109,20 @@ fireSpeed = room_speed / 2;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+checkMovement = false
+nearestEnemy = instance_nearest(x, y, o_enemy);
 if (canShoot) {
     canShoot = false // Toggle shooting off until tower reloads.
-    nearestEnemy = instance_nearest(x, y, o_enemy);
     //Need array for distances across upgrades
     if (distance_to_object(nearestEnemy) &lt; (range_array[towerLevel] * rangeMultiplier)) {
-        bullet = instance_create(x, y - 42, o_directionalBullet)
-        bullet.speed = 15; //I think this bullet speed should remain constant among all tower upgrades.
+        bullet = instance_create(x, y - 42, o_directionalbullet)
+        bullet.speed = 13; //I think this bullet speed should remain constant among all tower upgrades.
         bullet.atk = dmg_array[towerLevel] * damageMultiplier; //Need array for damage across upgrades
         time = sqrt(sqr(nearestEnemy.x - bullet.x) + sqr(nearestEnemy.y - bullet.y))/bullet.speed; //work out how long the bullet will take to reach it
         dst = nearestEnemy.spd*time; //work out how far the enemy will travel in this time
         
-        if (nearestEnemy.hspeed != 0 &amp;&amp; nearestEnemy.vspeed != 0)
-        {
-            xx = nearestEnemy.x+lengthdir_x(dst,nearestEnemy.direction); //add to bullet's target co-ordinates
-            yy = nearestEnemy.y+lengthdir_y(dst,nearestEnemy.direction);
-            rand = gauss(0, deviation_array[towerLevel]);
-        }
-        else
-        {
-            xx = nearestEnemy.x
-            yy = nearestEnemy.y
-            rand = 0;
-        }
-        bullet.direction = point_direction(bullet.x,bullet.y,xx + rand,yy + rand);
+        // Check whether enemy is moving or not; pass the reins here to End Step event so checking by xprevious and yprevious can work.
+        checkMovement = true
     }
     alarm[0] = fireSpeed * speedMultiplier;
 }

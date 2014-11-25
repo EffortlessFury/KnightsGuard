@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
+image_speed = .1
 
 enum ASSIGNMENT_TYPE {
     homework = 0,
@@ -34,14 +35,18 @@ enum ASSIGNMENT_TYPE {
     bigtest
     }
 
-spd_array[ASSIGNMENT_TYPE.homework] = 5;
-spd_array[ASSIGNMENT_TYPE.quiz] = 4;
-spd_array[ASSIGNMENT_TYPE.test] = 3;
+spd_array[ASSIGNMENT_TYPE.homework] = 3.5;
+spd_array[ASSIGNMENT_TYPE.quiz] = 3;
+spd_array[ASSIGNMENT_TYPE.test] = 2.5;
 spd_array[ASSIGNMENT_TYPE.bigtest] = 1;
 hp_array[ASSIGNMENT_TYPE.homework] = 5;
 hp_array[ASSIGNMENT_TYPE.quiz] = 10;
 hp_array[ASSIGNMENT_TYPE.test] = 15;
 hp_array[ASSIGNMENT_TYPE.bigtest] = 30;
+dmg_array[ASSIGNMENT_TYPE.homework] = 1;
+dmg_array[ASSIGNMENT_TYPE.quiz] = 2;
+dmg_array[ASSIGNMENT_TYPE.test] = 3;
+dmg_array[ASSIGNMENT_TYPE.bigtest] = 4;
 </string>
           </argument>
         </arguments>

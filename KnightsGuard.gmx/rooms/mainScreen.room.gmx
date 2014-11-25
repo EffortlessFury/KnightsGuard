@@ -53,8 +53,8 @@
   <instances>
     <instance objName="o_control" x="0" y="0" name="inst_9F83FC57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_assignmentspawn1" x="768" y="600" name="inst_1923BB1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_examspawn2" x="736" y="80" name="inst_207AEF24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_examspawn2" x="448" y="688" name="inst_81BF55CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_impedimentspawn" x="736" y="80" name="inst_207AEF24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_impedimentspawn" x="448" y="688" name="inst_81BF55CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_studentunion" x="538" y="384" name="inst_F34F0535" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="288" y="600" name="inst_76BAAE0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="464" y="248" name="inst_A5C17C65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -90,8 +90,8 @@
     <instance objName="o_mount" x="560" y="440" name="inst_EE59A775" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_assignmentspawn1" x="384" y="80" name="inst_0BFF9120" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_assignmentspawn2" x="288" y="688" name="inst_EF6B4097" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_examspawn1" x="224" y="186" name="inst_AC2B6B59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_examspawn1" x="896" y="472" name="inst_104A18EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_examspawn" x="224" y="186" name="inst_AC2B6B59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_examspawn" x="896" y="472" name="inst_104A18EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="352" y="392" name="inst_EA5E2113" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="416" y="552" name="inst_E2A6C27B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="496" y="232" name="inst_AB84C682" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

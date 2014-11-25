@@ -30,31 +30,50 @@ global.firstKillAchieved = false;
 
 // Initialize grid.
 global.grid = mp_grid_create(X_MARGIN, Y_MARGIN, ceil(room_width/CELL_SIZE) - 2*X_MARGIN/CELL_SIZE, ceil(room_height/CELL_SIZE) - 2*Y_MARGIN/CELL_SIZE, CELL_SIZE, CELL_SIZE)
+mp_grid_add_instances(global.grid, o_mount, false)
 
-// Spawning variables. // Katie: Grade? Score? Lives? Which ones are we using?
-// Jon: Both grade and score.
+// Spawning variables.
 score = 0
 global.uscore = score; // This needs to be here in order to reset score for new game.
-grade = 100
-money = 0 //not used yet
+money = 500
 r0und = 1
-roundChanged = false
 wave = 0
+
 global.enemiesInQueue = 0
+roundChanged = false
+roundStartTime = 0
+roundElapsedSeconds = 0
+spawnType = 0
 spawnTime = 60 // 60 steps between spawning each unit.
-waveText = false
+waveChanged = false
 
 // Tower strip variables.
-towerStripX = room_width - 6*97 - 1
+towerStripX = room_width - 3*97 - 1
 towerStripY = 0
 towerStripXOffset = 97
 towerStripYOffset = 65
+chosenTower = 0 // The tower the player currently has selected to build next.
 
-for (i = 0; i &lt; 6; i++)
+// Set up listed tower cost, damage, and accuracy.
+for (i = 0; i &lt; 3; i++)
 {
     towerCost[i] = 100*(i+1)
-    towerDmg[i] = 6*(i+1)
 }
+towerDmg[0] = 10
+towerDmg[1] = 12
+towerDmg[2] = 25
+towerAcc[0] = "60%"
+towerAcc[1] = "75%"
+towerAcc[2] = "90%"
+
+// Health stuff.
+maxHealth = 100
+health = maxHealth
+grade = 100
+healthX1 = 0
+healthY1 = 0
+healthXDisplacement = 350
+healthY2 = healthY1 + 22
 </string>
           </argument>
         </arguments>
@@ -78,18 +97,38 @@ for (i = 0; i &lt; 6; i++)
           <argument>
             <kind>1</kind>
             <string>/// Spawn enemies.
-switch (wave mod 4)
+if (global.enemiesInQueue &gt; 0)
 {
-    case 1: with (o_assignmentspawn1) {global.newEnemy = instance_create(x, y, o_assignment_homework); break}
-    case 2: with (o_examspawn1) {global.newEnemy = instance_create(x, y, o_assignment_bigtest); break}
-    case 3: with (o_assignmentspawn2) {global.newEnemy = instance_create(x, y, o_assignment_homework); break}
-    case 0: with (o_examspawn2) {global.newEnemy = instance_create(x, y, o_assignment_bigtest); break}
+    spawnType = choose(0, 1, 2, 3)
+    switch (spawnType)
+    {
+        case 0: with (o_assignmentspawn1)
+                {
+                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz))
+                }
+                break;
+        case 1: with (o_examspawn)
+                {
+                    instance_create(x, y, choose(o_assignment_test, o_assignment_bigtest))
+                }
+                break;
+        case 2: with (o_assignmentspawn2)
+                {
+                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz))
+                }
+                break;
+        case 3: with (o_impedimentspawn)
+                {
+                    instance_create(x, y, choose(o_financial, o_impediment_damage, o_impediment_range, o_impediment_speed))
+                }
+                break;
+    }
 }
-with (global.newEnemy)
+with (o_enemy)
 {
     if (mp_grid_path(global.grid, path, x, y, o_studentunion.x, o_studentunion.y, true))
     {
-        showPath = true
+        //showPath = true
         path_start(path, spd, 0, false)
     }
 }
@@ -117,7 +156,7 @@ if (global.enemiesInQueue &gt; 0) {alarm[1] = spawnTime} // Continue spawning if
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>waveText = false
+            <string>waveChanged = false
 </string>
           </argument>
         </arguments>
@@ -140,13 +179,31 @@ if (global.enemiesInQueue &gt; 0) {alarm[1] = spawnTime} // Continue spawning if
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Draw rectangle overlay if player clicks on tower.
+            <string>if (global.enemiesInQueue &lt; 0) {global.enemiesInQueue = 0}
+
+// Calculate round elapsed time in seconds.
+roundElapsedSeconds = (current_time - roundStartTime) div 1000
+
 if (mouse_check_button_pressed(mb_left))
 {
-    currentTower = instance_position(mouse_x, mouse_y, o_towerParent)
+    // Draw rectangle overlay if player clicks on tower.
+    currentTower = instance_position(mouse_x, mouse_y, o_tower)
     if (currentTower)
     {
         with (currentTower) {rectangleOverlay = !rectangleOverlay} // Toggle showing rectangle overlay.
+    }
+    // Choose tower type to build.
+    else if (mouse_x &gt; towerStripX + 0*towerStripXOffset &amp;&amp; mouse_x &lt; towerStripX + 1*towerStripXOffset &amp;&amp; mouse_y &gt; towerStripY &amp;&amp; mouse_y &lt; towerStripYOffset)
+    {
+        chosenTower = 0
+    }
+    else if (mouse_x &gt; towerStripX + 1*towerStripXOffset &amp;&amp; mouse_x &lt; towerStripX + 2*towerStripXOffset &amp;&amp; mouse_y &gt; towerStripY &amp;&amp; mouse_y &lt; towerStripYOffset)
+    {
+        chosenTower = 1
+    }
+    else if (mouse_x &gt; towerStripX + 2*towerStripXOffset &amp;&amp; mouse_x &lt; towerStripX + 3*towerStripXOffset &amp;&amp; mouse_y &gt; towerStripY &amp;&amp; mouse_y &lt; towerStripYOffset)
+    {
+        chosenTower = 2
     }
 }
 </string>
@@ -171,35 +228,62 @@ if (mouse_check_button_pressed(mb_left))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Tower GUI strip.
+            <string>// Draw black GUI rectangles.
+draw_set_color(c_black)
+draw_set_alpha(.6)
+draw_rectangle(0, 0, room_width, Y_MARGIN, 0)
+draw_rectangle(0, room_height - Y_MARGIN, room_width, room_height, 0)
+draw_set_alpha(1)
+
+// Draw the player's grade (proportional to the student union's health), money, and enemies left on the screen.
 draw_set_color(c_white)
-for (i = 0; i &lt; 6; i++)
+draw_set_font(font1)
+draw_text(room_width - 128, 70, "Money: " + string(money))
+draw_text(0, 32, "Incoming: " + string(global.enemiesInQueue))
+
+// Tower GUI strip.
+draw_set_color(c_white)
+for (i = 0; i &lt; 3; i++)
 {
     draw_rectangle(towerStripX + i*towerStripXOffset, towerStripY, towerStripX + (i+1)*towerStripXOffset, towerStripY + towerStripYOffset, 1)
     draw_sprite(s_tower, 0, towerStripX + 17 + i*towerStripXOffset, towerStripY + 49)
     draw_set_font(font0)
     draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4, "Cost: " + string(towerCost[i]))
     draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 13, "Dmg: " + string(towerDmg[i]))
-    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 26, "Acc:")
+    draw_text(towerStripX + 37 + i*towerStripXOffset, towerStripY + 4 + 26, "Acc: " + string(towerAcc[i]))
 }
+draw_set_color(c_red)
+if (chosenTower == 0) {draw_circle(towerStripX + 0*towerStripXOffset + 64, towerStripY + 53, 3, false)}
+else if (chosenTower == 1) {draw_circle(towerStripX + 1*towerStripXOffset + 64, towerStripY + 53, 3, false)}
+else if (chosenTower == 2) {draw_circle(towerStripX + 2*towerStripXOffset + 64, towerStripY + 53, 3, false)}
 
-// Draw black GUI outline.
-draw_set_color(c_black)
-draw_rectangle(X_MARGIN, Y_MARGIN + 2, room_width - X_MARGIN, room_height - Y_MARGIN, 1)
+// Draw elapsed time and tutorial text.
 draw_set_color(c_white)
-draw_set_font(font1)
-// Draw the player's grade (proportional to the student union's health) on the screen.
-draw_text(0, 0, "Grade: " + string(grade))
-draw_text(0, 22, "Score: " + string(global.uscore));
-draw_text(0, 44, "Incoming enemies: " + string(global.enemiesInQueue));
-// Draw tutorial text.
 draw_set_font(font0)
-draw_text(35, 67, "Press Enter for the next wave. Press P to pause.#Click to build towers. Right-click to demolish towers.")
+draw_text(room_width/2 - 75, 42, "Elapsed time: " + string(roundElapsedSeconds div 60) + ":" + string(roundElapsedSeconds mod 60) + ":" + string((current_time - roundStartTime) div 10 mod 100))
+draw_text(5, 67, "Protect the student union!#Press Enter for the next wave. Press P to pause.#Click on a tower in the upper right to choose it.#Click on the buildings on the map to build towers.#Right-click to demolish towers and regain some money.")
 
-// Display "Wave #" if the wave just changed, aka if waveText is true.
-draw_set_font(font2)
+// Draw score.
 draw_set_color(c_white)
-if (waveText)
+draw_set_font(font2)
+draw_text(room_width/2 - 80, 5, "Score: " + string(global.uscore))
+
+// Make sure healthbar doesn't try to go backward from being negative.
+if (health &lt; 0) {health = 0}
+grade = health/maxHealth * 100
+// Bar.
+draw_set_color(c_green)
+draw_rectangle(healthX1, healthY1, healthX1 + (health/maxHealth)*healthXDisplacement, healthY2, 0) // Green.
+draw_set_color(c_white)
+draw_rectangle(healthX1, healthY1, healthX1 + healthXDisplacement, healthY2, 1) // Black.
+// Draw the player's grade (proportional to the student union's health).
+draw_set_font(font1)
+draw_text(0, 0, "Grade: " + string(grade))
+
+// Display "Wave #" or "Round #" if the wave/round just changed, aka if waveChanged or roundChanged is true.
+draw_set_color(c_white)
+draw_set_font(font2)
+if (waveChanged)
 {
     if (roundChanged)
     {
@@ -211,48 +295,7 @@ if (waveText)
         draw_text(room_width/2 - 50, room_height/2 - 40, "Wave " + string(wave))
     }
 }
-draw_text(0, room_height - 60, "Round " + string(r0und))
-draw_text(room_width/2 - 50, room_height - 60, "Wave " + string(wave))
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/* // Katie: Not necessary since we're not doing the build-anywhere idea. Can easily be modified to show green over mount points and red otherwise.
-// If can place tower where mouse is positioned, rectangle is green.
-if (canPlaceHere)
-{
-    xx = floor(mouse_x/CELL_SIZE)*CELL_SIZE + 16
-    yy = floor(mouse_y/CELL_SIZE)*CELL_SIZE + 16
-    draw_set_alpha(.7)
-    draw_rectangle_color(xx - 16, yy - 16, xx + 16, yy + 16, c_green, c_green, c_green, c_green, false)
-    draw_set_alpha(1)
-}
-else//debug
-{
-    xx = floor(mouse_x/CELL_SIZE)*CELL_SIZE + 16
-    yy = floor(mouse_y/CELL_SIZE)*CELL_SIZE + 16
-    draw_set_alpha(.7)
-    draw_rectangle_color(xx - 16, yy - 16, xx + 16, yy + 16, c_red, c_red, c_red, c_red, false)
-    draw_set_alpha(1)
-}*/
+draw_text(room_width/2 - 100, room_height - 55, "Round " + string(r0und) + ", wave " + string(wave))
 </string>
           </argument>
         </arguments>
@@ -382,16 +425,18 @@ instance_create(0,0,o_pause);
             <kind>1</kind>
             <string>if (global.enemiesInQueue == 0)
 {
+    if (wave == 0) {roundStartTime = current_time} // Get elapsed time counter started.
     wave++
+    waveChanged = true
+    alarm[0] = 60 // Show waveChanged text for one second.
     if (wave % 5 == 0)
     {
+        if (r0und != 0) {roundStartTime = current_time}
         r0und++
         roundChanged = true
     }
-    waveText = true
-    alarm[0] = 60
-    global.enemiesInQueue += wave*5
-    alarm[1] = spawnTime
+    global.enemiesInQueue += wave*4
+    alarm[1] = spawnTime // Spawn new enemy until enemiesInQueue is zero.
 }
 </string>
           </argument>

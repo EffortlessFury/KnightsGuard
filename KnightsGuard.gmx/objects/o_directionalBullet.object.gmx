@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>var atk;
-fading = false
 </string>
           </argument>
         </arguments>
@@ -55,53 +54,17 @@ if (x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height) {instance_d
 // Make bullet face the way it's headed.
 image_angle = direction
 
-// If bullet collides with enemy, fade it out and damage enemy.
+// If bullet collides with enemy, destroy it and damage enemy.
 enemy = collision_point(x, y, o_enemy, false, true)
 if (enemy)
 {
-    fading = true
     enemy.hp -= atk
     with (enemy)
     {
         image_blend = c_blue
         alarm[0] = 15
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self()
-
-// Stop bullet and gradually decrease its alpha.
-if (fading)
-{
-    fading = false // Toggle.
-    spd = 0
-    for (i = 1; i &gt; 0; i -= .05)
-    {
-        draw_set_alpha(i)
-    }
     instance_destroy()
-    draw_set_alpha(1)
 }
 </string>
           </argument>

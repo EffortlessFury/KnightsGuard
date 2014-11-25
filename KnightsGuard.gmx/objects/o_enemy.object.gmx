@@ -31,17 +31,12 @@ hp = 0
 image_xscale = -1
 
 // How many points to add to player's score upon death.
-scoreModifier = o_control.wave + 9
+scoreModifier = (o_control.wave + 9*(1 - ((current_time - o_control.roundStartTime) div 60000))) // Modify the score modifier by the time lapsed since the round began (up to 1 minute); the longer the round takes, the fewer points earned (hence the 1 - ).
 global.uscore += scoreModifier;
 
 // Path.
 path = path_add()
-showPath = true
-/*if (mp_grid_path(global.grid, path, x, y, o_studentunion.x, o_studentunion.y, true))
-{
-    showPath = true
-    path_start(path, spd, 0, false)
-}*/
+showPath = false
 </string>
           </argument>
         </arguments>
@@ -99,7 +94,32 @@ if (hp &lt;= 0)
     path_delete(path)
     instance_destroy()
     score += scoreModifier
+    o_control.money += round(scoreModifier*.7) // Add 70% of the new score points to money.
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="o_studentunion">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>health -= dmg
+instance_destroy()
 </string>
           </argument>
         </arguments>
