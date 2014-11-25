@@ -42,7 +42,6 @@
     <sprite>sprites\s_financialfront</sprite>
     <sprite>sprites\s_financialback</sprite>
     <sprite>sprites\s_financialhurt</sprite>
-    <sprite>sprites\s_enter</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\titleBackground</background>
@@ -160,7 +159,6 @@
     </objects>
     <object>objects\o_scoreBackButton</object>
     <object>objects\o_scoreSync</object>
-    <object>objects\o_enterButton</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\registerScreen</room>
@@ -176,7 +174,7 @@
     </rooms>
   </rooms>
   <constants number="7">
-    <constant name="GM_build_date">41967.2282645023</constant>
+    <constant name="GM_build_date">41958.2392649421</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
     <constant name="CELL_SIZE">32</constant>
     <constant name="X_MARGIN">32</constant>
