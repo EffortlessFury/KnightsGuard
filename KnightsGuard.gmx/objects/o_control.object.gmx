@@ -104,22 +104,26 @@ if (global.enemiesInQueue &gt; 0)
     spawnType = choose(0, 1, 2, 3)
     switch (spawnType)
     {
-        case 0:
-            enemyToSpawn = choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest)
-            instance_create(o_assignmentspawn1.x, o_assignmentspawn1.y, enemyToSpawn)
-            break;
-        case 1:
-            enemyToSpawn = choose(o_impediment_damage, o_impediment_range, o_impediment_speed)
-            instance_create(o_impedimentspawn1.x, o_assignmentspawn1.y, enemyToSpawn)
-            break;
-        case 2:
-            enemyToSpawn = choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest)
-            instance_create(o_assignmentspawn2.x, o_assignmentspawn2.y, enemyToSpawn)
-            break;
-        case 3:
-            enemyToSpawn = choose(o_financial, o_impediment_damage, o_impediment_range, o_impediment_speed)
-            instance_create(o_impedimentspawn2.x, o_assignmentspawn2.y, enemyToSpawn)
-            break;
+        case 0: with (o_assignmentspawn1)
+                {
+                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
+                }
+                break;
+        case 1: with (o_impedimentspawn1)
+                {
+                    instance_create(x, y, choose(o_impediment_damage, o_impediment_range, o_impediment_speed))
+                }
+                break;
+        case 2: with (o_assignmentspawn2)
+                {
+                    instance_create(x, y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
+                }
+                break;
+        case 3: with (o_impedimentspawn2)
+                {
+                    instance_create(x, y, choose(o_financial, o_impediment_damage, o_impediment_range, o_impediment_speed))
+                }
+                break;
     }
 }
 with (o_enemy)

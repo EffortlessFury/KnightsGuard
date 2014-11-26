@@ -28,7 +28,6 @@
             <string>// Stats.
 spd = 0
 hp = 0
-dmg = 0
 image_xscale = -1
 
 // How many points to add to player's score upon death.

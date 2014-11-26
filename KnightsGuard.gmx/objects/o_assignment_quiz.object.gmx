@@ -30,7 +30,7 @@ image_blend = make_color_hsv(200, 200, 255)
 
 spd = spd_array[ASSIGNMENT_TYPE.quiz];
 hp = hp_array[ASSIGNMENT_TYPE.quiz];
-dmg = dmg_array[ASSIGNMENT_TYPE.quiz];
+dmg = dmg_array[ASSIGNMENT_TYPE.homework];
 </string>
           </argument>
         </arguments>
