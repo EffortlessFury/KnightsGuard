@@ -111,6 +111,7 @@
     <instance objName="o_mount" x="544" y="328" name="inst_135D29E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="576" y="328" name="inst_BD4B8D00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_assignmentspawn4" x="928" y="288" name="inst_223D31CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_ingame_music" x="64" y="0" name="inst_7AC8EE9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
