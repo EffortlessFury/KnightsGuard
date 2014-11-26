@@ -35,7 +35,9 @@ enum IMPEDIMENT_TYPE {
 }
 
 buffAmount = .8 //80% damage/speed/range
-buffLength = room_speed * 5 //5 seconds
+buffLength = room_speed * 10 //5 seconds
+hp = 80
+spd = 10
 </string>
           </argument>
         </arguments>
