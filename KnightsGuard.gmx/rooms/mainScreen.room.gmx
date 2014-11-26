@@ -52,8 +52,8 @@
   </views>
   <instances>
     <instance objName="o_control" x="0" y="0" name="inst_9F83FC57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_assignmentspawn1" x="768" y="600" name="inst_1923BB1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_impedimentspawn2" x="736" y="80" name="inst_207AEF24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_assignmentspawn3" x="768" y="600" name="inst_0C881830" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_impedimentspawn4" x="736" y="80" name="inst_388EC648" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_impedimentspawn2" x="448" y="688" name="inst_81BF55CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_studentunion" x="538" y="384" name="inst_F34F0535" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="288" y="600" name="inst_76BAAE0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -90,7 +90,7 @@
     <instance objName="o_mount" x="560" y="440" name="inst_EE59A775" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_assignmentspawn1" x="384" y="80" name="inst_0BFF9120" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_assignmentspawn2" x="288" y="688" name="inst_EF6B4097" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_impedimentspawn1" x="224" y="186" name="inst_AC2B6B59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_impedimentspawn3" x="224" y="186" name="inst_990A6012" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_impedimentspawn1" x="896" y="472" name="inst_104A18EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="352" y="392" name="inst_EA5E2113" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="416" y="552" name="inst_E2A6C27B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -110,7 +110,7 @@
     <instance objName="o_mount" x="800" y="216" name="inst_3F02D084" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="544" y="328" name="inst_135D29E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_mount" x="576" y="328" name="inst_BD4B8D00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_assignmentspawn2" x="928" y="288" name="inst_6C88B117" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_assignmentspawn4" x="928" y="288" name="inst_223D31CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

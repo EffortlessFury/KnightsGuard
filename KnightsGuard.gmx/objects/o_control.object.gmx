@@ -101,20 +101,32 @@ healthY2 = healthY1 + 30
             <string>/// Spawn enemies.
 if (global.enemiesInQueue &gt; 0)
 {
-    spawnType = choose(0, 1, 2, 3)
+    spawnType = choose(0, 1, 2, 3, 4, 5, 6, 7)
     switch (spawnType)
     {
         case 0:
             instance_create(o_assignmentspawn1.x, o_assignmentspawn1.y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
             break;
         case 1:
-            instance_create(o_impedimentspawn1.x, o_impedimentspawn1.y, choose(o_impediment_damage, o_impediment_range, o_impediment_speed))
-            break;
-        case 2:
             instance_create(o_assignmentspawn2.x, o_assignmentspawn2.y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
             break;
+        case 2:
+            instance_create(o_assignmentspawn3.x, o_assignmentspawn3.y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
+            break;
         case 3:
-            instance_create(o_impedimentspawn2.x, o_impedimentspawn2.y, choose(o_financial, o_impediment_damage, o_impediment_range, o_impediment_speed))
+            instance_create(o_assignmentspawn4.x, o_assignmentspawn4.y, choose(o_assignment_homework, o_assignment_quiz, o_assignment_test, o_assignment_bigtest))
+            break;
+        case 4:
+            instance_create(o_impedimentspawn1.x, o_impedimentspawn1.y, choose(o_impediment_damage, o_impediment_range, o_impediment_speed))
+            break;
+        case 5:
+            instance_create(o_impedimentspawn2.x, o_impedimentspawn2.y, choose(o_impediment_damage, o_impediment_range, o_impediment_speed))
+            break;
+        case 6:
+            instance_create(o_impedimentspawn3.x, o_impedimentspawn3.y, choose(o_financial, o_impediment_damage, o_impediment_range, o_impediment_speed))
+            break;
+        case 7:
+            instance_create(o_impedimentspawn4.x, o_impedimentspawn4.y, choose(o_financial, o_impediment_damage, o_impediment_range, o_impediment_speed))
             break;
     }
 }

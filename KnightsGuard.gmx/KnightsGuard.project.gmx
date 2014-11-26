@@ -107,9 +107,13 @@
     <object>objects\o_aoebullet</object>
     <object>objects\o_aoeexplosion</object>
     <object>objects\o_assignmentspawn1</object>
+    <object>objects\o_assignmentspawn3</object>
+    <object>objects\o_assignmentspawn4</object>
     <object>objects\o_assignmentspawn2</object>
     <object>objects\o_impedimentspawn1</object>
+    <object>objects\o_impedimentspawn3</object>
     <object>objects\o_impedimentspawn2</object>
+    <object>objects\o_impedimentspawn4</object>
     <object>objects\o_mount</object>
     <object>objects\o_studentunion</object>
     <objects name="Enemies">
