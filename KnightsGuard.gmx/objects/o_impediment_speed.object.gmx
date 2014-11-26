@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited()
 
-spd = 6
+spd = 3
 dmg = 0
 hp = 80
 </string>
